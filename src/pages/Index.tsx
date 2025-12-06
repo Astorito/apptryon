@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
 import ForBrands from "@/components/ForBrands";
 import FAQ from "@/components/FAQ";
+import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -13,6 +14,7 @@ const Index = () => {
       <HowItWorks />
       <ForBrands />
       <FAQ />
+      <ContactForm />
       <Footer />
     </main>
   );

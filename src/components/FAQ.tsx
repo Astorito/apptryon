@@ -8,7 +8,7 @@ import {
 const faqs = [
   {
     question: "¿How do I install it?",
-    answer: "Simply copy and paste our widget code into your website. It's a single line of JavaScript that works instantly. No complex setup or technical knowledge required. Our team is also available to help with custom integrations.",
+    answer: "Yo me encargo de instalarlo por ti. En menos de 3 días tendrás TryOn funcionando en tu sitio web. Solo necesitas proporcionarme acceso a tu plataforma.",
   },
   {
     question: "¿Can I integrate with e-commerce platforms?",
@@ -25,10 +25,10 @@ const FAQ = () => {
     <section id="faq" className="section-padding">
       <div className="container max-w-3xl">
         <div className="text-center mb-12 space-y-4">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-            Frequently asked <span className="text-gradient">questions</span>
+          <h2 className="text-3xl sm:text-4xl font-playfair font-normal tracking-tight text-foreground">
+            Frequently asked <span className="text-gradient font-bold">questions</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="font-inter text-muted-foreground text-lg">
             Everything you need to know about TryOn
           </p>
         </div>
@@ -40,10 +40,10 @@ const FAQ = () => {
               value={`item-${index}`}
               className="bg-card border border-border rounded-2xl px-6 data-[state=open]:shadow-lg data-[state=open]:shadow-primary/5 transition-all"
             >
-              <AccordionTrigger className="text-left font-semibold hover:no-underline py-6">
+              <AccordionTrigger className="text-left font-playfair font-semibold hover:no-underline py-6 text-foreground">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground leading-relaxed pb-6">
+              <AccordionContent className="font-inter text-muted-foreground leading-relaxed pb-6">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
