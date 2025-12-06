@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
-
 const Hero = () => {
-  return (
-    <section className="min-h-screen flex items-center pt-16">
+  return <section className="min-h-screen flex items-center pt-16">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left content */}
@@ -13,10 +11,10 @@ const Hero = () => {
               <span className="text-sm font-inter font-medium text-muted-foreground">AI-Powered Virtual Try-On</span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-playfair font-bold leading-[1.1] tracking-tight text-foreground">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-playfair leading-[1.1] tracking-tight text-foreground font-semibold">
               Try your clothes
               <br />
-              <span className="text-gradient">before buying it</span>
+              <span className="text-gradient text-5xl font-sans font-normal">before buying it</span>
             </h1>
             
             <p className="text-lg sm:text-xl font-inter text-muted-foreground max-w-md leading-relaxed">
@@ -24,26 +22,16 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-wrap gap-4">
-              <Button 
-                asChild
-                variant="cta"
-                size="lg" 
-                className="rounded-full px-8 py-6 text-base"
-              >
+              <Button asChild variant="cta" size="lg" className="rounded-full px-8 py-6 text-base">
                 <a href="#contact">Talk with sales</a>
               </Button>
             </div>
 
             <div className="flex items-center gap-6 pt-4">
               <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <div 
-                    key={i} 
-                    className="w-10 h-10 rounded-full bg-secondary border-2 border-background flex items-center justify-center text-xs font-inter font-medium"
-                  >
+                {[1, 2, 3, 4].map(i => <div key={i} className="w-10 h-10 rounded-full bg-secondary border-2 border-background flex items-center justify-center text-xs font-inter font-medium">
                     {String.fromCharCode(64 + i)}
-                  </div>
-                ))}
+                  </div>)}
               </div>
               <p className="text-sm font-inter text-muted-foreground">
                 <span className="font-semibold text-foreground">500+</span> brands already using TryOn
@@ -74,8 +62,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
