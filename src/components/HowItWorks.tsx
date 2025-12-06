@@ -33,10 +33,10 @@ const HowItWorks = () => {
     <section id="how-it-works" className="section-padding">
       <div className="container">
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
-            How it <span className="text-gradient">works</span>
+          <h2 className="text-3xl sm:text-4xl font-playfair font-normal tracking-tight text-foreground">
+            How it <span className="text-gradient font-bold">works</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="font-inter text-muted-foreground text-lg max-w-2xl mx-auto">
             Five simple steps to transform your customer experience
           </p>
         </div>
@@ -53,7 +53,7 @@ const HowItWorks = () => {
               >
                 <div className="bg-background p-6 rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
                   {/* Step number */}
-                  <div className="absolute -top-3 left-6 px-2 py-0.5 rounded-full bg-primary text-primary-foreground text-xs font-bold">
+                  <div className="absolute -top-3 left-6 px-2 py-0.5 rounded-full bg-primary text-primary-foreground text-xs font-inter font-bold">
                     {index + 1}
                   </div>
                   
@@ -61,8 +61,8 @@ const HowItWorks = () => {
                     <step.icon className="w-6 h-6 text-primary" />
                   </div>
                   
-                  <h3 className="font-semibold mb-2 text-lg">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
+                  <h3 className="font-playfair font-semibold mb-2 text-lg text-foreground">{step.title}</h3>
+                  <p className="text-sm font-inter text-muted-foreground leading-relaxed">{step.description}</p>
                 </div>
               </div>
             ))}
