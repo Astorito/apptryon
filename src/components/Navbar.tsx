@@ -18,6 +18,9 @@ const Navbar = () => {
           <a href="#faq" className="text-sm font-inter font-medium text-muted-foreground hover:text-foreground transition-colors">
             FAQ
           </a>
+          <a href="/demo" className="text-sm font-inter font-medium text-muted-foreground hover:text-foreground transition-colors">
+            Demo
+          </a>
         </div>
 
         <Button asChild variant="cta" className="rounded-full px-6">
