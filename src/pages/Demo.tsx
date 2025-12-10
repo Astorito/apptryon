@@ -34,6 +34,7 @@ const Demo = () => {
     const script = document.createElement("script");
     script.src = "https://tryon-backend-delta.vercel.app/widget.js?v=3";
     script.defer = true;
+    script.setAttribute("data-tryon-key", "testtryon01");
     document.body.appendChild(script);
 
     return () => {
