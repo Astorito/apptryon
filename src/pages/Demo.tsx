@@ -66,13 +66,13 @@ const Demo = () => {
 
       {/* Main Content */}
       <div className="container py-8">
-        <div className="grid lg:grid-cols-5 gap-8">
-          {/* Left Side - Products */}
-          <div className="lg:col-span-3">
+        <div className="max-w-4xl mx-auto">
+          {/* Products Grid */}
+          <div>
             <h2 className="font-playfair text-2xl text-foreground mb-6">
               Selecciona un producto
             </h2>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {products.map((product) => (
                 <div
                   key={product.id}
@@ -98,18 +98,11 @@ const Demo = () => {
             </div>
           </div>
 
-          {/* Right Side - Widget Area */}
-          <div className="lg:col-span-2 flex flex-col">
-            <h2 className="font-playfair text-2xl text-foreground mb-6">
-              Prueba virtual
-            </h2>
-            <div className="flex-1 bg-card rounded-xl border border-border p-4 min-h-[500px] flex items-end justify-center">
-              {/* Widget will be injected here by the script */}
-              <div id="tryon-widget-container" className="w-full" />
-            </div>
-          </div>
         </div>
       </div>
+
+      {/* Floating Widget Container - Bottom Right */}
+      <div id="tryon-widget-container" className="fixed bottom-4 right-4 z-50" />
     </div>
   );
 };
