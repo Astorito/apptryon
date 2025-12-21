@@ -32,14 +32,14 @@ const products = [
 const Demo = () => {
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "https://tryon-backend.vercel.app/widget-v1.js";
+    script.src = "https://tryon-backend.vercel.app/api/widget";
     script.defer = true;
     script.setAttribute("data-tryon-key", "testtryon01");
     document.body.appendChild(script);
 
     return () => {
       const existingScript = document.querySelector(
-        'script[src="https://tryon-backend.vercel.app/widget-v1.js"]'
+        'script[src="https://tryon-backend.vercel.app/api/widget"]'
       );
       if (existingScript) {
         document.body.removeChild(existingScript);
