@@ -33,9 +33,9 @@ const Demo = () => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://tryon-backend-definitivo.vercel.app/api/widget";
-    script.defer = true;
+    script.async = true;
     script.setAttribute("data-tryon-key", "demotryon01");
-    document.body.appendChild(script);
+    document.head.appendChild(script);
 
     return () => {
       const existingScript = document.querySelector(
