@@ -42,7 +42,7 @@ const Demo = () => {
         'script[src="https://tryon-backend-definitivo.vercel.app/api/widget"]'
       );
       if (existingScript) {
-        document.body.removeChild(existingScript);
+        document.head.removeChild(existingScript);
       }
     };
   }, []);
