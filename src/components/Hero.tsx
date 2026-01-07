@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Play } from "lucide-react";
+
 const Hero = () => {
   return <section className="min-h-screen flex items-center pt-16">
       <div className="container">
@@ -39,20 +39,23 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right content - Video placeholder */}
+          {/* Right content - Video */}
           <div className="relative opacity-0 fade-up stagger-2">
             <div className="aspect-video rounded-2xl bg-card border border-border overflow-hidden shadow-2xl shadow-primary/5">
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/5 to-primary/10">
-                <div className="w-20 h-20 rounded-full bg-cta/20 backdrop-blur-sm flex items-center justify-center group hover:scale-105 transition-transform border border-cta/30">
-                  <Play className="w-8 h-8 text-cta ml-1" />
-                </div>
-              </div>
-              <div className="absolute bottom-4 left-4 right-4 flex items-center gap-3">
-                <div className="flex-1 h-1 rounded-full bg-foreground/10">
-                  <div className="h-full w-0 rounded-full bg-primary" />
-                </div>
-                <span className="text-xs font-inter text-muted-foreground font-medium">2:34</span>
-              </div>
+              <video 
+                className="w-full h-full object-cover"
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
+              >
+                <source 
+                  src="https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/public/video/Video%20Demo%20(1).mp4" 
+                  type="video/mp4" 
+                />
+                Tu navegador no soporta el tag de video.
+              </video>
             </div>
             
             {/* Floating badge */}
