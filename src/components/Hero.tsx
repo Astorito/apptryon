@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 
-const VIDEO_URL = "https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/public/video//demo-web.mp4";
+const VIDEO_URL = "https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/public/video/demo-web.mp4";
 
 const Hero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
