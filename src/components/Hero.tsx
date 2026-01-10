@@ -1,17 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Loader2, Play } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 const VIDEO_URL = "https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/public/video//demo-web.mp4";
 
 const Hero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const handlePlayClick = () => {
-    setIsPlaying(true);
-  };
 
   return <section className="min-h-screen flex items-center pt-16">
       <div className="container">
@@ -54,59 +49,44 @@ const Hero = () => {
           {/* Right content - Video */}
           <div className="relative opacity-0 fade-up stagger-2">
             <div className="relative aspect-video rounded-2xl bg-card border border-border overflow-hidden shadow-2xl shadow-primary/5">
-              {!isPlaying ? (
-                <button 
-                  onClick={handlePlayClick}
-                  className="absolute inset-0 flex flex-col items-center justify-center bg-muted hover:bg-muted/80 transition-colors cursor-pointer z-10"
-                >
-                  <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center mb-3">
-                    <Play className="w-6 h-6 text-primary-foreground ml-1" />
-                  </div>
-                  <p className="text-sm text-muted-foreground">Click para ver demo</p>
-                </button>
-              ) : (
-                <>
-                  {/* Loading state */}
-                  {!videoLoaded && !videoError && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-muted z-10">
-                      <Loader2 className="w-10 h-10 animate-spin text-primary" />
-                    </div>
-                  )}
-                  
-                  {/* Error state */}
-                  {videoError && (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-muted z-10 gap-3">
-                      <p className="text-muted-foreground">Error al cargar el video</p>
-                      <a 
-                        href={VIDEO_URL} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-primary underline text-sm"
-                      >
-                        Abrir en nueva pestaña
-                      </a>
-                    </div>
-                  )}
-                  
-                  <video 
-                    className={`w-full h-full object-cover transition-opacity duration-300 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    controls
-                    onLoadedData={() => setVideoLoaded(true)}
-                    onCanPlay={() => setVideoLoaded(true)}
-                    onError={() => setVideoError(true)}
-                  >
-                    <source 
-                      src={VIDEO_URL}
-                      type="video/mp4" 
-                    />
-                    Tu navegador no soporta el tag de video.
-                  </video>
-                </>
+              {/* Loading state */}
+              {!videoLoaded && !videoError && (
+                <div className="absolute inset-0 flex items-center justify-center bg-muted z-10">
+                  <Loader2 className="w-10 h-10 animate-spin text-primary" />
+                </div>
               )}
+              
+              {/* Error state */}
+              {videoError && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-muted z-10 gap-3">
+                  <p className="text-muted-foreground">Error al cargar el video</p>
+                  <a 
+                    href={VIDEO_URL} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-primary underline text-sm"
+                  >
+                    Abrir en nueva pestaña
+                  </a>
+                </div>
+              )}
+              
+              <video 
+                className={`w-full h-full object-cover transition-opacity duration-300 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+                autoPlay
+                muted
+                loop
+                playsInline
+                onLoadedData={() => setVideoLoaded(true)}
+                onCanPlay={() => setVideoLoaded(true)}
+                onError={() => setVideoError(true)}
+              >
+                <source 
+                  src={VIDEO_URL}
+                  type="video/mp4" 
+                />
+                Tu navegador no soporta el tag de video.
+              </video>
             </div>
             
             {/* Floating badge */}
