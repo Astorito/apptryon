@@ -77,15 +77,19 @@ const Hero = () => {
                 muted
                 loop
                 playsInline
+                preload="auto"
                 onLoadedData={() => setVideoLoaded(true)}
                 onCanPlay={() => setVideoLoaded(true)}
-                onError={() => setVideoError(true)}
+                onError={(e) => {
+                  console.error('Video error:', e);
+                  setVideoError(true);
+                }}
               >
                 <source 
                   src={VIDEO_URL}
                   type="video/mp4" 
                 />
-                Tu navegador no soporta el tag de video.
+                Your browser does not support the video tag.
               </video>
             </div>
             
