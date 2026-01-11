@@ -1,12 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
-
-const VIDEO_URL = "https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/public/video/demo-web.mp4";
+import { supabase } from "@/integrations/supabase/client";
 
 const Hero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const [videoError, setVideoError] = useState(false);
+  const [videoUrl, setVideoUrl] = useState<string>("");
+
+  useEffect(() => {
+    const { data } = supabase.storage
+      .from('video')
+      .getPublicUrl('demo-web.mp4');
+    
+    setVideoUrl(`${data.publicUrl}?t=${Date.now()}`);
+  }, []);
 
   return <section className="min-h-screen flex items-center pt-16">
       <div className="container">
@@ -49,48 +56,24 @@ const Hero = () => {
           {/* Right content - Video */}
           <div className="relative opacity-0 fade-up stagger-2">
             <div className="relative aspect-video rounded-2xl bg-card border border-border overflow-hidden shadow-2xl shadow-primary/5">
-              {/* Loading state */}
-              {!videoLoaded && !videoError && (
+              {!videoLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center bg-muted z-10">
                   <Loader2 className="w-10 h-10 animate-spin text-primary" />
                 </div>
               )}
               
-              {/* Error state */}
-              {videoError && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-muted z-10 gap-3">
-                  <p className="text-muted-foreground">Error al cargar el video</p>
-                  <a 
-                    href={VIDEO_URL} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-primary underline text-sm"
-                  >
-                    Abrir en nueva pestaña
-                  </a>
-                </div>
+              {videoUrl && (
+                <video 
+                  className={`w-full h-full object-cover transition-opacity duration-300 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  onLoadedData={() => setVideoLoaded(true)}
+                >
+                  <source src={videoUrl} type="video/mp4" />
+                </video>
               )}
-              
-              <video 
-                className={`w-full h-full object-cover transition-opacity duration-300 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                onLoadedData={() => setVideoLoaded(true)}
-                onCanPlay={() => setVideoLoaded(true)}
-                onError={(e) => {
-                  console.error('Video error:', e);
-                  setVideoError(true);
-                }}
-              >
-                <source 
-                  src={VIDEO_URL}
-                  type="video/mp4" 
-                />
-                Your browser does not support the video tag.
-              </video>
             </div>
             
             {/* Floating badge */}
