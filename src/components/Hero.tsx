@@ -1,21 +1,10 @@
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
 
-const VIDEO_URL = "https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4";
+const VIDEO_URL = "https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/public/video/demo-web.mp4";
 
 const Hero = () => {
-  const [videoLoaded, setVideoLoaded] = useState(false);
-
-  // Fallback: ocultar spinner después de 5 segundos
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setVideoLoaded(true);
-    }, 5000);
-    return () => clearTimeout(timeout);
-  }, []);
-
-  return <section className="min-h-screen flex items-center pt-16">
+  return (
+    <section className="min-h-screen flex items-center pt-16">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left content */}
@@ -43,9 +32,11 @@ const Hero = () => {
 
             <div className="flex items-center gap-6 pt-4">
               <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map(i => <div key={i} className="w-10 h-10 rounded-full bg-secondary border-2 border-background flex items-center justify-center text-xs font-inter font-medium">
+                {[1, 2, 3, 4].map(i => (
+                  <div key={i} className="w-10 h-10 rounded-full bg-secondary border-2 border-background flex items-center justify-center text-xs font-inter font-medium">
                     {String.fromCharCode(64 + i)}
-                  </div>)}
+                  </div>
+                ))}
               </div>
               <p className="text-sm font-inter text-muted-foreground">
                 <span className="font-semibold text-foreground">500+</span> brands already using TryOn
@@ -53,32 +44,16 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right content - Video */}
+          {/* Right content - Video directo sin box */}
           <div className="relative opacity-0 fade-up stagger-2">
-            <div className="relative aspect-video rounded-2xl bg-card border border-border overflow-hidden shadow-2xl shadow-primary/5">
-              {!videoLoaded && (
-                <div className="absolute inset-0 flex items-center justify-center bg-muted z-10">
-                  <Loader2 className="w-10 h-10 animate-spin text-primary" />
-                </div>
-              )}
-              
-              <video 
-                className={`w-full h-full object-cover transition-opacity duration-300 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                onCanPlay={() => setVideoLoaded(true)}
-                onLoadedData={() => setVideoLoaded(true)}
-                onError={(e) => {
-                  console.error('Video error:', e);
-                  setVideoLoaded(true);
-                }}
-              >
-                <source src={VIDEO_URL} type="video/mp4" />
-              </video>
-            </div>
+            <video 
+              className="w-full aspect-video rounded-2xl object-cover shadow-2xl"
+              autoPlay
+              muted
+              loop
+              playsInline
+              src={VIDEO_URL}
+            />
             
             {/* Floating badge */}
             <div className="absolute -bottom-4 -left-4 px-4 py-3 rounded-xl bg-card border border-border shadow-lg animate-float">
@@ -87,6 +62,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;
