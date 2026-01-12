@@ -1,19 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+
+const VIDEO_URL = "https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/public/video/demo-web.mp4";
 
 const Hero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const [videoUrl, setVideoUrl] = useState<string>("");
-
-  useEffect(() => {
-    const { data } = supabase.storage
-      .from('video')
-      .getPublicUrl('demo-web.mp4');
-    
-    setVideoUrl(`${data.publicUrl}?t=${Date.now()}`);
-  }, []);
 
   return <section className="min-h-screen flex items-center pt-16">
       <div className="container">
@@ -62,18 +54,16 @@ const Hero = () => {
                 </div>
               )}
               
-              {videoUrl && (
-                <video 
-                  className={`w-full h-full object-cover transition-opacity duration-300 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  onLoadedData={() => setVideoLoaded(true)}
-                >
-                  <source src={videoUrl} type="video/mp4" />
-                </video>
-              )}
+              <video 
+                className={`w-full h-full object-cover transition-opacity duration-300 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+                autoPlay
+                muted
+                loop
+                playsInline
+                onLoadedData={() => setVideoLoaded(true)}
+              >
+                <source src={VIDEO_URL} type="video/mp4" />
+              </video>
             </div>
             
             {/* Floating badge */}
