@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 
@@ -6,6 +6,14 @@ const VIDEO_URL = "https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/pu
 
 const Hero = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
+
+  // Fallback: ocultar spinner después de 5 segundos
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setVideoLoaded(true);
+    }, 5000);
+    return () => clearTimeout(timeout);
+  }, []);
 
   return <section className="min-h-screen flex items-center pt-16">
       <div className="container">
@@ -60,7 +68,13 @@ const Hero = () => {
                 muted
                 loop
                 playsInline
+                preload="auto"
+                onCanPlay={() => setVideoLoaded(true)}
                 onLoadedData={() => setVideoLoaded(true)}
+                onError={(e) => {
+                  console.error('Video error:', e);
+                  setVideoLoaded(true);
+                }}
               >
                 <source src={VIDEO_URL} type="video/mp4" />
               </video>
