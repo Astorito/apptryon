@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-const VIDEO_URL = "https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/public/video//demo-web.mp4";
+const GIF_URL = "https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/public/video/GIF-Landing.gif";
 
 const Hero = () => {
   return (
@@ -46,13 +46,10 @@ const Hero = () => {
 
           {/* Right content - Video directo sin box */}
           <div className="relative opacity-0 fade-up stagger-2">
-            <video 
+            <img 
+              src={GIF_URL}
+              alt="Virtual Try-On Demo"
               className="w-full aspect-video rounded-2xl object-cover shadow-2xl"
-              autoPlay
-              muted
-              loop
-              playsInline
-              src={VIDEO_URL}
             />
             
             {/* Floating badge */}
