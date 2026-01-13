@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-const VIDEO_URL = "https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/public/video/demo-web.mp4";
+const VIDEO_URL = "https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/public/video//demo-web.mp4";
 
 const Hero = () => {
   return (
