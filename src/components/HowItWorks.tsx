@@ -68,6 +68,19 @@ const HowItWorks = () => {
             ))}
           </div>
         </div>
+
+        {/* YouTube Video Section */}
+        <div className="mt-16 flex justify-center">
+          <div className="w-full max-w-4xl aspect-video rounded-2xl overflow-hidden shadow-2xl">
+            <iframe
+              src="https://www.youtube.com/embed/WrCrLKpvuqs"
+              title="TryOn Demo Video"
+              className="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
