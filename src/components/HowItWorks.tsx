@@ -73,10 +73,11 @@ const HowItWorks = () => {
         <div className="mt-16 flex justify-center">
           <div className="w-full max-w-4xl aspect-video rounded-2xl overflow-hidden shadow-2xl">
             <iframe
-              src="https://www.youtube.com/embed/WrCrLKpvuqs"
+              src="https://www.youtube-nocookie.com/embed/WrCrLKpvuqs?rel=0"
               title="TryOn Demo Video"
-              className="w-full h-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              className="w-full h-full border-0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
             />
           </div>
