@@ -39,7 +39,7 @@ const products = [
     id: 6,
     name: "Falda Midi Plisada",
     price: "$69.99",
-    image: "https://images.unsplash.com/photo-1583496661160-fb5886a0uj25?w=400&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=500&fit=crop",
   },
   {
     id: 7,
@@ -70,7 +70,7 @@ const products = [
     id: 11,
     name: "Polo Clásico",
     price: "$44.99",
-    image: "https://images.unsplash.com/photo-1625910513413-5fc420e7ec7d?w=400&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=400&h=500&fit=crop",
   },
   {
     id: 12,
