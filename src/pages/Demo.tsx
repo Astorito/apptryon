@@ -157,20 +157,27 @@ const products = [
 
 const Demo = () => {
   useEffect(() => {
+    const scriptSrc = "https://tryon-backend-definitivo.vercel.app/api/widget";
+    
+    // Check if script already exists OR widget is already initialized
+    const existingScript = document.querySelector(`script[src="${scriptSrc}"]`);
+    const widgetAlreadyExists = document.querySelector('[data-tryon-widget]') || 
+                                 (window as any).__TRYON_WIDGET_LOADED__;
+    
+    if (existingScript || widgetAlreadyExists) {
+      return;
+    }
+
+    // Mark as loading to prevent duplicate loads
+    (window as any).__TRYON_WIDGET_LOADED__ = true;
+
     const script = document.createElement("script");
-    script.src = "https://tryon-backend-definitivo.vercel.app/api/widget";
+    script.src = scriptSrc;
     script.async = true;
     script.setAttribute("data-tryon-key", "demotryon01");
     document.head.appendChild(script);
 
-    return () => {
-      const existingScript = document.querySelector(
-        'script[src="https://tryon-backend-definitivo.vercel.app/api/widget"]'
-      );
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
+    // No cleanup - let the widget persist to avoid re-initialization errors
   }, []);
 
   return (
