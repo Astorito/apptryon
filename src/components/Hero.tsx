@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Store, ShoppingBag, Shirt, Gem } from "lucide-react";
 
 const GIF_URL = "https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/public/video/GIF-Landing.gif";
 
@@ -32,14 +33,14 @@ const Hero = () => {
 
             <div className="flex items-center gap-6 pt-4">
               <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map(i => (
-                  <div key={i} className="w-10 h-10 rounded-full bg-secondary border-2 border-background flex items-center justify-center text-xs font-inter font-medium">
-                    {String.fromCharCode(64 + i)}
+                {[Store, ShoppingBag, Shirt, Gem].map((Icon, i) => (
+                  <div key={i} className="w-10 h-10 rounded-full bg-secondary border-2 border-background flex items-center justify-center">
+                    <Icon className="w-4 h-4 text-muted-foreground" />
                   </div>
                 ))}
               </div>
               <p className="text-sm font-inter text-muted-foreground">
-                <span className="font-semibold text-foreground">500+</span> brands already using TryOn
+                <span className="font-semibold text-foreground">25+</span> brands already using TryOn
               </p>
             </div>
           </div>
