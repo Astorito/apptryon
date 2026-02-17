@@ -159,22 +159,21 @@ const Demo = () => {
   useEffect(() => {
     const scriptSrc = "https://organic-space-fishstick-69p4x47v4vgxcrrv7-3001.app.github.dev/api/widget";
     
-    // Check if script already exists OR widget is already initialized
-    const existingScript = document.querySelector(`script[src="${scriptSrc}"]`);
-    const widgetAlreadyExists = document.querySelector('[data-tryon-widget]') || 
-                                 (window as any).__TRYON_WIDGET_LOADED__;
+    // Remove old widget scripts if URL changed
+    const oldScripts = document.querySelectorAll('script[src*="tryon-backend-definitivo"]');
+    oldScripts.forEach(s => s.remove());
     
-    if (existingScript || widgetAlreadyExists) {
+    // Check if this exact script already exists
+    const existingScript = document.querySelector(`script[src="${scriptSrc}"]`);
+    if (existingScript) {
       return;
     }
-
-    // Mark as loading to prevent duplicate loads
-    (window as any).__TRYON_WIDGET_LOADED__ = true;
 
     const script = document.createElement("script");
     script.src = scriptSrc;
     script.async = true;
     script.setAttribute("data-tryon-key", "tryon_mlqqsbsv_rhyiqjlu");
+    document.head.appendChild(script);
     document.head.appendChild(script);
 
     // No cleanup - let the widget persist to avoid re-initialization errors
