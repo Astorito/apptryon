@@ -15,13 +15,13 @@ const Hero = () => {
             </div>
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-playfair leading-[1.1] tracking-tight text-foreground font-semibold">
-              Try your clothes
+              More Sales with
               <br />
-              <span className="text-gradient text-5xl font-sans font-normal">before buying it</span>
+              <span className="text-gradient text-5xl font-sans font-normal">Virtual Try On</span>
             </h1>
             
             <p className="text-lg sm:text-xl font-inter text-muted-foreground max-w-md leading-relaxed">
-              AI Widget for your website. Let customers see how clothes look on them instantly.
+              Increase conversion, reduce returns and boost order value. Beat your competition with instant AI virtual experience.
             </p>
             
             <div className="flex flex-wrap gap-4">
