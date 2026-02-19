@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Store, ShoppingBag, Shirt, Gem } from "lucide-react";
+import { motion } from "framer-motion";
 
 const GIF_URL = "https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/public/video/GIF-Landing.gif";
 
@@ -15,15 +16,36 @@ const Hero = () => {
               <span className="text-sm font-inter font-medium text-muted-foreground">AI-Powered Virtual Try-On</span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-playfair leading-[1.1] tracking-tight text-foreground font-semibold">
+            <motion.h1
+              className="text-4xl sm:text-5xl lg:text-6xl font-playfair leading-[1.1] tracking-tight text-foreground font-semibold"
+              initial={{ y: -220, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{
+                type: "spring",
+                stiffness: 120,
+                damping: 14,
+                mass: 0.9,
+              }}
+              style={{ willChange: "transform" }}
+            >
               More Sales with
               <br />
               <span className="text-gradient text-5xl font-sans font-normal">Virtual Try On</span>
-            </h1>
+            </motion.h1>
             
-            <p className="text-lg sm:text-xl font-inter text-muted-foreground max-w-md leading-relaxed">
+            <motion.p
+              className="text-lg sm:text-xl font-inter text-muted-foreground max-w-md leading-relaxed"
+              initial={{ opacity: 0, filter: "blur(12px)", y: 20 }}
+              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+              transition={{
+                duration: 0.8,
+                delay: 0.3,
+                ease: "easeOut",
+              }}
+              style={{ willChange: "transform" }}
+            >
               Increase conversion, reduce returns and boost order value. Beat your competition with instant AI virtual experience.
-            </p>
+            </motion.p>
             
             <div className="flex flex-wrap gap-4">
               <Button asChild variant="cta" size="lg" className="rounded-full px-8 py-6 text-base">
