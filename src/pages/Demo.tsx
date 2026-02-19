@@ -214,7 +214,9 @@ const Demo = () => {
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      draggable={true}
+                      crossOrigin="anonymous"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-grab active:cursor-grabbing"
                     />
                   </div>
                   <div className="p-4">
