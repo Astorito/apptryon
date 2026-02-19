@@ -17,7 +17,7 @@ const Hero = () => {
             </div>
             
             <motion.h1
-              className="text-4xl sm:text-5xl lg:text-6xl font-playfair leading-[1.1] tracking-tight text-foreground font-semibold"
+              className="leading-[1.1] tracking-tight text-foreground font-semibold"
               initial={{ y: -220, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{
@@ -28,9 +28,27 @@ const Hero = () => {
               }}
               style={{ willChange: "transform" }}
             >
-              More Sales with
-              <br />
-              <span className="text-gradient text-5xl font-sans font-normal">Virtual Try On</span>
+              <span
+                className="block"
+                style={{
+                  fontFamily: "'Shadows Into Light', cursive",
+                  fontSize: "clamp(2.8rem, 7vw, 5.4rem)",
+                  lineHeight: 1.1,
+                }}
+              >
+                More Sales with
+              </span>
+              <span
+                className="block text-gradient"
+                style={{
+                  fontFamily: "'Playpen Sans', cursive",
+                  fontWeight: 400,
+                  fontSize: "clamp(2.4rem, 6vw, 4.8rem)",
+                  lineHeight: 1.15,
+                }}
+              >
+                Virtual Try On
+              </span>
             </motion.h1>
             
             <motion.p
