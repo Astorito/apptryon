@@ -157,10 +157,10 @@ const products = [
 
 const Demo = () => {
   useEffect(() => {
-    const scriptSrc = "https://organic-space-fishstick-69p4x47v4vgxcrrv7-3001.app.github.dev/api/widget";
+    const scriptSrc = "https://try-on-cursor.vercel.app/api/widget";
     
     // Remove old widget scripts if URL changed
-    const oldScripts = document.querySelectorAll('script[src*="tryon-backend-definitivo"]');
+    const oldScripts = document.querySelectorAll('script[src*="organic-space-fishstick"], script[src*="tryon-backend-definitivo"]');
     oldScripts.forEach(s => s.remove());
     
     // Check if this exact script already exists
@@ -173,7 +173,6 @@ const Demo = () => {
     script.src = scriptSrc;
     script.async = true;
     script.setAttribute("data-tryon-key", "tryon_mlqqsbsv_rhyiqjlu");
-    document.head.appendChild(script);
     document.head.appendChild(script);
 
     // No cleanup - let the widget persist to avoid re-initialization errors
