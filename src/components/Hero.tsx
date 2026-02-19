@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Store, ShoppingBag, Shirt, Gem } from "lucide-react";
 import { motion } from "framer-motion";
+import RotatingTypewriter from "@/components/RotatingTypewriter";
 
 const GIF_URL = "https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/public/video/GIF-Landing.gif";
 
@@ -28,7 +29,9 @@ const Hero = () => {
               }}
               style={{ willChange: "transform" }}
             >
-              <span className="font-roboto inline-block" style={{ transform: "scale(1.4)", transformOrigin: "left center", display: "inline-block" }}>More Sales with</span>
+              <span className="font-roboto inline-block" style={{ transform: "scale(1.4)", transformOrigin: "left center", display: "inline-block" }}>
+                <RotatingTypewriter />
+              </span>
               <br />
               <span className="text-gradient text-5xl font-sans font-normal">Virtual Try On</span>
             </motion.h1>
