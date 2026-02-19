@@ -28,7 +28,7 @@ const Hero = () => {
               }}
               style={{ willChange: "transform" }}
             >
-              More Sales with
+              <span className="font-roboto inline-block" style={{ transform: "scale(1.4)", transformOrigin: "left center", display: "inline-block" }}>More Sales with</span>
               <br />
               <span className="text-gradient text-5xl font-sans font-normal">Virtual Try On</span>
             </motion.h1>
