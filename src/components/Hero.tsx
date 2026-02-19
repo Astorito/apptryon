@@ -29,8 +29,8 @@ const Hero = () => {
               }}
               style={{ willChange: "transform" }}
             >
-              <span className="font-roboto inline-block" style={{ transform: "scale(1.4)", transformOrigin: "left center", display: "inline-block" }}>
-                <RotatingTypewriter />
+              <span className="font-roboto inline-block" style={{ transform: "scale(1.26)", transformOrigin: "left center", display: "inline-block" }}>
+                <RotatingTypewriter speed={58} />
               </span>
               <br />
               <span className="text-gradient text-5xl font-sans font-normal">Virtual Try On</span>
