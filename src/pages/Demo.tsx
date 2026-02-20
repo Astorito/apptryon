@@ -210,13 +210,18 @@ const Demo = () => {
                   key={product.id}
                   className="bg-card rounded-xl overflow-hidden border border-border hover:shadow-lg transition-shadow cursor-pointer group"
                 >
-                  <div className="aspect-[4/5] overflow-hidden">
+                  <div className="aspect-[4/5]">
                     <img
                       src={product.image}
                       alt={product.name}
                       draggable={true}
                       crossOrigin="anonymous"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-grab active:cursor-grabbing"
+                      className="w-full h-full object-cover cursor-grab active:cursor-grabbing"
+                      onDragStart={(e) => {
+                        e.dataTransfer.setData("text/uri-list", product.image);
+                        e.dataTransfer.setData("text/plain", product.image);
+                        e.dataTransfer.effectAllowed = "copy";
+                      }}
                     />
                   </div>
                   <div className="p-4">
