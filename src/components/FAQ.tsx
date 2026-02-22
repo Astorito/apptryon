@@ -8,11 +8,11 @@ import {
 const faqs = [
   {
     question: "¿How do I install it?",
-    answer: "Yo me encargo de instalarlo por ti. En menos de 3 días tendrás TryOn funcionando en tu sitio web. Solo necesitas proporcionarme acceso a tu plataforma.",
+    answer: "Yo me encargo de instalarlo por ti. En menos de 3 días tendrás Try Look funcionando en tu sitio web. Solo necesitas proporcionarme acceso a tu plataforma.",
   },
   {
     question: "¿Can I integrate with e-commerce platforms?",
-    answer: "Yes! TryOn works seamlessly with Shopify, WooCommerce, Hostinger, Webflow, Nube, MercadoShops, and virtually any platform that supports custom JavaScript. We also offer native plugins for popular platforms.",
+    answer: "Yes! Try Look works seamlessly with Shopify, WooCommerce, Hostinger, Webflow, Nube, MercadoShops, and virtually any platform that supports custom JavaScript. We also offer native plugins for popular platforms.",
   },
   {
     question: "¿How is the billing?",
@@ -29,7 +29,7 @@ const FAQ = () => {
             Frequently asked <span className="text-gradient font-bold">questions</span>
           </h2>
           <p className="font-inter text-muted-foreground text-lg">
-            Everything you need to know about TryOn
+            Everything you need to know about Try Look
           </p>
         </div>
 

@@ -25,12 +25,12 @@ const ForBrands = () => {
               </div>
               <pre className="text-sm overflow-x-auto">
                 <code className="text-primary-foreground/70">
-                  <span className="text-primary-foreground/40">{"<!-- Add TryOn to your site -->"}</span>
+                  <span className="text-primary-foreground/40">{"<!-- Add Try Look to your site -->"}</span>
                   {"\n"}
                   <span className="text-blue-400">{"<script "}</span>
                   <span className="text-green-400">src</span>
                   <span className="text-primary-foreground/70">{"="}</span>
-                  <span className="text-orange-400">"https://tryon.ai/widget.js"</span>
+                  <span className="text-orange-400">"https://trylook.ai/widget.js"</span>
                   <span className="text-blue-400">{">"}</span>
                   {"\n"}
                   <span className="text-blue-400">{"</script>"}</span>
@@ -49,7 +49,7 @@ const ForBrands = () => {
                 <span className="text-gradient font-bold">Endless possibilities.</span>
               </h2>
               <p className="text-lg font-inter text-muted-foreground leading-relaxed">
-                Integrate TryOn in minutes, not days. Our widget works seamlessly with all major e-commerce platforms.
+                Integrate Try Look in minutes, not days. Our widget works seamlessly with all major e-commerce platforms.
               </p>
             </div>
 
@@ -88,7 +88,7 @@ const ForBrands = () => {
               size="lg" 
               className="rounded-full px-8 py-6 text-base"
             >
-              <a href="#contact">Start integrating today</a>
+              <a href="#contact">Join the waitlist</a>
             </Button>
           </div>
         </div>
