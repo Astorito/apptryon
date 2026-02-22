@@ -3,7 +3,7 @@ import { Code, Upload, Shirt, Sparkles, ShoppingCart } from "lucide-react";
 const steps = [
   {
     icon: Code,
-    title: "Put TryOn in your website",
+    title: "Put Try Look in your website",
     description: "Add one line of code to embed the widget",
   },
   {
@@ -18,7 +18,7 @@ const steps = [
   },
   {
     icon: Sparkles,
-    title: "TryOn works for you",
+    title: "Try Look works for you",
     description: "AI generates realistic try-on in seconds",
   },
   {

@@ -5,7 +5,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container flex items-center justify-between h-16">
         <a href="/" className="text-xl font-playfair font-bold tracking-tight text-foreground">
-          TryOn<span className="text-primary">.</span>
+          Try Look<span className="text-primary">.</span>
         </a>
         
         <div className="hidden md:flex items-center gap-8">
@@ -24,7 +24,7 @@ const Navbar = () => {
         </div>
 
         <Button asChild variant="cta" className="rounded-full px-6">
-          <a href="#contact">Talk with sales</a>
+          <a href="#contact">Join the waitlist</a>
         </Button>
       </div>
     </nav>

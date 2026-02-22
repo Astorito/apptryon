@@ -191,7 +191,7 @@ const Demo = () => {
             <span className="font-inter text-sm">Volver</span>
           </Link>
           <h1 className="font-playfair font-bold text-xl text-foreground mx-auto">
-            Demo TryOn
+            Demo Try Look
           </h1>
         </div>
       </header>

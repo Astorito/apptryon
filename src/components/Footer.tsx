@@ -12,7 +12,7 @@ const Footer = () => {
             <span className="text-gradient font-bold">customer experience?</span>
           </h2>
           <p className="text-lg font-inter text-muted-foreground max-w-xl mx-auto">
-            Join 500+ brands using TryOn to increase conversions and reduce returns.
+            Join 500+ brands using Try Look to increase conversions and reduce returns.
           </p>
           <Button 
             asChild
@@ -20,7 +20,7 @@ const Footer = () => {
             size="lg" 
             className="rounded-full px-10 py-6 text-base"
           >
-            <a href="#contact">Talk with sales</a>
+            <a href="#contact">Join the waitlist</a>
           </Button>
         </div>
       </div>
@@ -29,7 +29,7 @@ const Footer = () => {
       <div className="py-8 border-t border-border">
         <div className="container flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-xl font-playfair font-bold tracking-tight text-foreground">
-            TryOn<span className="text-primary">.</span>
+            Try Look<span className="text-primary">.</span>
           </div>
           
           <div className="flex items-center gap-6 text-sm font-inter text-muted-foreground">
@@ -39,7 +39,7 @@ const Footer = () => {
           </div>
           
           <p className="text-sm font-inter text-muted-foreground">
-            © 2024 TryOn. All rights reserved.
+            © 2024 Try Look. All rights reserved.
           </p>
         </div>
       </div>

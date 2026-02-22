@@ -52,20 +52,20 @@ const Hero = () => {
             
             <div className="flex flex-wrap gap-4">
               <Button asChild variant="cta" size="lg" className="rounded-full px-8 py-6 text-base">
-                <a href="#contact">Talk with sales</a>
+                <a href="#contact">Join the waitlist</a>
               </Button>
             </div>
 
             <div className="flex items-center gap-6 pt-4">
               <div className="flex -space-x-2">
-                {[Store, ShoppingBag, Shirt, Gem].map((Icon, i) => (
+                {["Atelièr", "NOVA", "Lûme", "Voss"].map((name, i) => (
                   <div key={i} className="w-10 h-10 rounded-full bg-secondary border-2 border-background flex items-center justify-center">
-                    <Icon className="w-4 h-4 text-muted-foreground" />
+                    <span className="text-[10px] font-inter font-bold text-muted-foreground">{name.slice(0, 2).toUpperCase()}</span>
                   </div>
                 ))}
               </div>
               <p className="text-sm font-inter text-muted-foreground">
-                <span className="font-semibold text-foreground">25+</span> brands already using TryOn
+                <span className="font-semibold text-foreground">25+</span> brands already using Try Look
               </p>
             </div>
           </div>
