@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Store, ShoppingBag, Shirt, Gem } from "lucide-react";
 import { motion } from "framer-motion";
 import RotatingTypewriter from "@/components/RotatingTypewriter";
+import { Progress } from "@/components/ui/progress";
 
 const GIF_URL = "https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/public/video/GIF-Landing.gif";
 
@@ -36,8 +36,8 @@ const Hero = () => {
               <span className="text-gradient text-5xl font-sans font-normal">Virtual Try On</span>
             </motion.h1>
             
-            <motion.p
-              className="text-lg sm:text-xl font-inter text-muted-foreground max-w-md leading-relaxed"
+            <motion.div
+              className="max-w-md space-y-2"
               initial={{ opacity: 0, filter: "blur(12px)", y: 20 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               transition={{
@@ -47,27 +47,40 @@ const Hero = () => {
               }}
               style={{ willChange: "transform" }}
             >
-              Increase conversion, reduce returns and boost order value. Beat your competition with instant AI virtual experience.
-            </motion.p>
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-inter font-semibold text-primary tracking-wide">Early Access</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-2xl font-playfair font-bold text-foreground">9</span>
+                  <span className="text-lg text-muted-foreground font-inter">/ 15</span>
+                  <span className="text-xs font-inter font-semibold text-muted-foreground tracking-widest ml-1">BRANDS</span>
+                </div>
+              </div>
+              <div className="relative h-3 w-full rounded-full bg-secondary overflow-hidden">
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-primary to-primary/70 transition-all"
+                  style={{ width: `${(9 / 15) * 100}%` }}
+                />
+                <div
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    width: `${(9 / 15) * 100}%`,
+                    background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%)",
+                    backgroundSize: "200% 100%",
+                    animation: "shimmer 2s infinite",
+                  }}
+                />
+              </div>
+            </motion.div>
             
             <div className="flex flex-wrap gap-4">
               <Button asChild variant="cta" size="lg" className="rounded-full px-8 py-6 text-base">
-                <a href="#contact">Join the waitlist</a>
+                <a href="#contact">Secure your spot</a>
               </Button>
             </div>
 
-            <div className="flex items-center gap-6 pt-4">
-              <div className="flex -space-x-2">
-                {["Atelièr", "NOVA", "Lûme", "Voss"].map((name, i) => (
-                  <div key={i} className="w-10 h-10 rounded-full bg-secondary border-2 border-background flex items-center justify-center">
-                    <span className="text-[10px] font-inter font-bold text-muted-foreground">{name.slice(0, 2).toUpperCase()}</span>
-                  </div>
-                ))}
-              </div>
-              <p className="text-sm font-inter text-muted-foreground">
-                <span className="font-semibold text-foreground">25+</span> brands already using Try Look
-              </p>
-            </div>
+            <p className="text-sm font-inter text-muted-foreground pt-2">
+              Prices increase automatically when 15 brands join
+            </p>
           </div>
 
           {/* Right content - Video directo sin box */}
