@@ -35,6 +35,10 @@ const Hero = () => {
               <br />
               <span className="text-gradient text-5xl font-sans font-normal">Virtual Try On</span>
             </motion.h1>
+
+            <p className="text-lg sm:text-xl font-inter text-muted-foreground max-w-md leading-relaxed">
+              Turn visitors into buyers with instant virtual try-on
+            </p>
             
             <motion.div
               className="max-w-md space-y-2"
@@ -50,9 +54,9 @@ const Hero = () => {
               <div className="flex items-center justify-between">
                 <span className="text-sm font-inter font-semibold text-primary tracking-wide">Early Access</span>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-playfair font-bold text-foreground">9</span>
-                  <span className="text-lg text-muted-foreground font-inter">/ 15</span>
-                  <span className="text-xs font-inter font-semibold text-muted-foreground tracking-widest ml-1">BRANDS</span>
+                  <span className="text-2xl font-sans font-bold text-foreground">9</span>
+                  <span className="text-lg text-muted-foreground font-sans">/ 15</span>
+                  <span className="text-xs font-sans font-semibold text-muted-foreground tracking-widest ml-1">BRANDS</span>
                 </div>
               </div>
               <div className="relative h-3 w-full rounded-full bg-secondary overflow-hidden">
@@ -78,8 +82,8 @@ const Hero = () => {
               </Button>
             </div>
 
-            <p className="text-sm font-inter text-muted-foreground pt-2">
-              Prices increase automatically when 15 brands join
+            <p className="text-sm font-inter text-muted-foreground pt-2 italic">
+              *Prices increase automatically when 15 brands join
             </p>
           </div>
 
