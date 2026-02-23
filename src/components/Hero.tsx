@@ -36,7 +36,7 @@ const Hero = () => {
               <span className="text-gradient text-5xl font-sans font-normal">Virtual Try On</span>
             </motion.h1>
 
-            <p className="text-lg sm:text-xl font-inter text-muted-foreground max-w-md leading-relaxed">
+            <p className="text-lg sm:text-xl font-inter text-muted-foreground max-w-lg leading-relaxed whitespace-nowrap">
               Turn visitors into buyers with instant virtual try-on
             </p>
             
