@@ -1,4 +1,5 @@
 import { Undo2, ShoppingCart, TrendingDown } from "lucide-react";
+import { motion } from "framer-motion";
 
 const painPoints = [
   {
@@ -35,16 +36,26 @@ const PainPoints = () => {
 
         <div className="grid sm:grid-cols-3 gap-6">
           {painPoints.map((point, index) => (
-            <div
+            <motion.div
               key={index}
               className="bg-foreground border border-border rounded-2xl p-8 text-center space-y-4"
+              initial={{ y: -80, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                type: "spring",
+                stiffness: 120,
+                damping: 14,
+                mass: 0.8,
+                delay: index * 0.15,
+              }}
             >
               <div className="w-12 h-12 rounded-xl mx-auto flex items-center justify-center">
                 <point.icon className="w-7 h-7 text-primary" />
               </div>
               <h3 className="font-playfair font-bold text-lg text-background">{point.title}</h3>
               <p className="text-sm font-inter text-background/70 leading-relaxed">{point.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
