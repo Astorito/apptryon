@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { motion } from "framer-motion";
 
 const products = [
   // Fila 1
@@ -241,6 +242,29 @@ const Demo = () => {
       </div>
 
       {/* Floating Widget Container - Bottom Right */}
+      {/* Radial lines around widget */}
+      <div className="fixed bottom-4 right-4 z-40 pointer-events-none flex items-center justify-center w-16 h-16">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <motion.span
+            key={i}
+            className="absolute bg-primary/30 rounded-full"
+            style={{
+              width: 1.5,
+              height: 18,
+              transformOrigin: "center center",
+              rotate: `${i * 45}deg`,
+              translateY: -30,
+            }}
+            animate={{ opacity: [0.15, 0.5, 0.15], scaleY: [0.7, 1, 0.7] }}
+            transition={{
+              repeat: Infinity,
+              duration: 2,
+              ease: "easeInOut",
+              delay: i * 0.15,
+            }}
+          />
+        ))}
+      </div>
       <div id="tryon-widget-container" className="fixed bottom-4 right-4 z-50" />
     </div>
   );
