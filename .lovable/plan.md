@@ -1,40 +1,28 @@
 
-## Fix: Drag de imágenes en /demo
+## Make the "Demo" Link Stand Out in the Navbar
 
-### Causa raíz del problema
+The goal is to transform the "Demo" nav link from a plain text link into an eye-catching, animated element that invites users to try the product.
 
-Hay dos problemas que impiden el drag:
+### Approach
 
-1. **`overflow-hidden` en el contenedor**: El `div` padre con `overflow-hidden` hace que el ghost image del drag aparezca cortado o no se genere correctamente en algunos navegadores.
+Convert the "Demo" link into a small pill/badge-style button with:
 
-2. **Falta de `onDragStart` con `dataTransfer`**: El widget de TryOn espera recibir la URL de la imagen via el evento `dragstart`. Sin setear `dataTransfer.setData("text/uri-list", url)` y `dataTransfer.setData("text/plain", url)`, el widget no sabe qué imagen está siendo arrastrada.
+1. **Styled as a pill** -- Give it a background with the CTA color (the warm beige/gold), rounded-full, padding, and white text so it visually pops compared to the other plain text links.
 
-3. **`pointer-events` conflicto**: El `group-hover:scale-105` con `transition-transform` puede capturar eventos del mouse antes de que el drag comience.
+2. **Subtle pulse animation** -- Add a soft, continuous pulse glow effect using framer-motion's `animate` prop (scale oscillation + box-shadow glow). This draws the eye without being annoying.
 
-### Cambios a realizar en `src/pages/Demo.tsx`
+3. **A small sparkle indicator** -- Prepend a small sparkle icon or a pulsing dot (like the one in the Hero badge) to signal interactivity.
 
-**1. Agregar `onDragStart` a cada imagen** para pasar la URL al widget:
-```tsx
-onDragStart={(e) => {
-  e.dataTransfer.setData("text/uri-list", product.image);
-  e.dataTransfer.setData("text/plain", product.image);
-  e.dataTransfer.effectAllowed = "copy";
-}}
-```
+### Technical Details
 
-**2. Remover `overflow-hidden` del contenedor de imagen**, o mantenerlo pero mover el `overflow-hidden` sólo al contenedor exterior del card, no al wrapper de la imagen — para que el ghost del drag se genere correctamente.
+**File: `src/components/Navbar.tsx`**
 
-**3. Eliminar el `group-hover:scale-105`** de la imagen ya que interfiere con el inicio del drag al generar un transform activo.
+- Import `motion` from `framer-motion`
+- Replace the plain `<a>` for Demo with a `motion.a` element
+- Style it as a pill: `bg-primary text-primary-foreground rounded-full px-4 py-1.5`
+- Add a continuous subtle animation:
+  - `animate={{ scale: [1, 1.05, 1] }}` with `transition={{ repeat: Infinity, duration: 2 }}`
+- Add a small pulsing dot or sparkle emoji before the text ("Try it" or keep "Demo")
+- Optionally add a soft `box-shadow` glow that pulses with the scale
 
-**4. Agregar `onDragOver` y `onDrop` hints** al widget container si es necesario (aunque esto lo maneja el widget de TryOn).
-
-### Resultado esperado
-
-- El usuario puede hacer click y drag desde cualquier imagen del catálogo
-- El ghost image del drag se ve completo (no cortado)
-- El widget de TryOn recibe la URL de la imagen correctamente via `dataTransfer`
-- El hover visual se mantiene pero sin interferir con el drag
-
-### Archivo a modificar
-
-- `src/pages/Demo.tsx` — sólo el bloque del `<img>` y su contenedor `div.aspect-[4/5]`
+The result: "Demo" becomes a small highlighted pill with a gentle breathing animation that naturally draws attention, consistent with the premium aesthetic of the site.
