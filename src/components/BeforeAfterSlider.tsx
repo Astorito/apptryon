@@ -104,9 +104,14 @@ const BeforeAfterSlider = () => {
         </div>
 
         {/* Widget icon — bottom right */}
-        <div className="absolute bottom-3 right-3 z-30 pointer-events-none">
-          <img src={widgetIcon} alt="Widget" className="w-11 h-11 object-contain drop-shadow-lg" />
-        </div>
+      {/* Widget icon — bottom right */}
+<div className="absolute bottom-6 right-6 z-30 pointer-events-none">
+  <img 
+    src={widgetIcon} 
+    alt="Widget" 
+    className="w-28 h-28 object-contain drop-shadow-2xl"
+  />
+</div>
       </div>
     </div>
   );
