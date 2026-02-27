@@ -1,9 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import RotatingTypewriter from "@/components/RotatingTypewriter";
-import { Progress } from "@/components/ui/progress";
-
-const GIF_URL = "https://nlimqvmcazgrpyficals.supabase.co/storage/v1/object/public/video/GIF-Landing.gif";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -80,6 +79,11 @@ const Hero = () => {
               <Button asChild variant="cta" size="lg" className="rounded-full px-8 py-6 text-base">
                 <a href="#contact">Secure your spot</a>
               </Button>
+              <Button asChild variant="outline" size="lg" className="rounded-full px-8 py-6 text-base border-foreground text-foreground bg-background hover:bg-foreground/5">
+                <a href="/demo" className="flex items-center gap-2">
+                  Try it live <ArrowRight className="w-4 h-4" />
+                </a>
+              </Button>
             </div>
 
             <p className="text-sm font-inter text-muted-foreground pt-2 italic">
@@ -87,18 +91,9 @@ const Hero = () => {
             </p>
           </div>
 
-          {/* Right content - Video directo sin box */}
+          {/* Right content - Before/After Slider */}
           <div className="relative opacity-0 fade-up stagger-2">
-            <img 
-              src={GIF_URL}
-              alt="Virtual Try-On Demo"
-              className="w-full aspect-video rounded-2xl object-cover shadow-2xl"
-            />
-            
-            {/* Floating badge */}
-            <div className="absolute -bottom-4 -left-4 px-4 py-3 rounded-xl bg-card border border-border shadow-lg animate-float">
-              <p className="text-sm font-inter font-medium text-foreground">✨ Powered by AI</p>
-            </div>
+            <BeforeAfterSlider />
           </div>
         </div>
       </div>
