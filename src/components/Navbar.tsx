@@ -24,20 +24,31 @@ const Navbar = () => {
 
         {/* Nav links */}
         <div className="hidden md:flex items-center gap-5">
-          <a href="#how-it-works" className="text-sm font-inter font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">How it works</a>
-          <a href="#for-brands" className="text-sm font-inter font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">For Brands</a>
-          <a href="#faq" className="text-sm font-inter font-medium text-muted-foreground hover:text-foreground transition-colors">FAQ</a>
+          <a href="#how-it-works" className="text-sm font-inter font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">
+            How it works
+          </a>
+          <a href="#for-brands" className="text-sm font-inter font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">
+            For Brands
+          </a>
+          <a href="#faq" className="text-sm font-inter font-medium text-muted-foreground hover:text-foreground transition-colors">
+            FAQ
+          </a>
+
+          {/* Demo — outline style like "Try it live", but with bounce */}
           <motion.a
             href="/demo"
-            className="text-sm font-inter font-semibold rounded-full px-4 py-1.5 flex items-center gap-1.5 whitespace-nowrap"
-            style={{ backgroundColor: "hsl(28 31% 45%)", color: "#fff" }}
+            className="text-sm font-inter font-medium rounded-full px-4 py-1.5 flex items-center gap-1.5 whitespace-nowrap border-2 border-foreground text-foreground bg-transparent hover:bg-foreground hover:text-background transition-colors duration-200"
             animate={{
               scale: [1, 1.05, 1],
-              boxShadow: ["0 0 0 0 hsl(28 31% 45% / 0)", "0 0 12px 2px hsl(28 31% 45% / 0.35)", "0 0 0 0 hsl(28 31% 45% / 0)"],
+              boxShadow: [
+                "0 0 0 0 rgba(0,0,0,0)",
+                "0 0 10px 2px rgba(0,0,0,0.12)",
+                "0 0 0 0 rgba(0,0,0,0)",
+              ],
             }}
             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-foreground animate-pulse" />
             Demo
           </motion.a>
         </div>
