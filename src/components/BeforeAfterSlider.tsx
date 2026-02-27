@@ -36,35 +36,31 @@ const BeforeAfterSlider = () => {
   };
 
   return (
-    <div className="relative w-full max-w-lg mx-auto">
+    <div className="relative w-full max-w-[410px] mx-auto">
 
-      {/* ── Static garment thumbnails (no animation, just shadow) ── */}
-      {/* Top-left: Campera */}
+      {/* Garments: 154px (128 * 1.2), static, shadow only */}
       <img
         src={campera}
         alt="Jacket"
-        className="absolute -left-28 top-6 w-32 h-32 object-contain rounded-2xl shadow-xl bg-white z-10 hidden lg:block"
+        className="absolute -left-[160px] top-6 w-[154px] h-[154px] object-contain rounded-2xl shadow-xl bg-white z-10 hidden lg:block"
       />
-      {/* Top-right: Camiseta */}
       <img
         src={camiseta}
         alt="T-shirt"
-        className="absolute -right-28 top-6 w-32 h-32 object-contain rounded-2xl shadow-xl bg-white z-10 hidden lg:block"
+        className="absolute -right-[160px] top-6 w-[154px] h-[154px] object-contain rounded-2xl shadow-xl bg-white z-10 hidden lg:block"
       />
-      {/* Bottom-left: Pantalon */}
       <img
         src={pantalon}
         alt="Pants"
-        className="absolute -left-28 bottom-24 w-32 h-32 object-contain rounded-2xl shadow-xl bg-white z-10 hidden lg:block"
+        className="absolute -left-[160px] bottom-24 w-[154px] h-[154px] object-contain rounded-2xl shadow-xl bg-white z-10 hidden lg:block"
       />
-      {/* Bottom-right: Zapatillas */}
       <img
         src={zapatillas}
         alt="Sneakers"
-        className="absolute -right-28 bottom-24 w-32 h-32 object-contain rounded-2xl shadow-xl bg-white z-10 hidden lg:block"
+        className="absolute -right-[160px] bottom-24 w-[154px] h-[154px] object-contain rounded-2xl shadow-xl bg-white z-10 hidden lg:block"
       />
 
-      {/* ── Main slider container ── */}
+      {/* Slider container */}
       <div
         ref={containerRef}
         className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden shadow-2xl cursor-col-resize select-none"
@@ -76,7 +72,7 @@ const BeforeAfterSlider = () => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleMouseUp}
       >
-        {/* AFTER — model with beige outfit, full width underneath */}
+        {/* AFTER — beige outfit, full width underneath */}
         <img
           src={modelBeige}
           alt="After - With outfit"
@@ -84,7 +80,7 @@ const BeforeAfterSlider = () => {
           draggable={false}
         />
 
-        {/* BEFORE — base/gray model, clipped via clip-path (no image distortion) */}
+        {/* BEFORE — gray base model, clipped via clip-path (no distortion) */}
         <img
           src={modelGray}
           alt="Before - Base"
@@ -99,7 +95,7 @@ const BeforeAfterSlider = () => {
           style={{ left: `${sliderPos}%`, transform: "translateX(-50%)" }}
         />
 
-        {/* Circular drag handle */}
+        {/* Drag handle */}
         <div
           className="absolute top-1/2 z-30 pointer-events-none"
           style={{ left: `${sliderPos}%`, transform: "translate(-50%, -50%)" }}
