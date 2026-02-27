@@ -1,11 +1,18 @@
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import widgetIcon from "@/assets/Widget.png";
 
 const Navbar = () => {
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 px-6 pt-3">
-      <nav className="flex items-center justify-between h-14 px-5 rounded-2xl bg-background/70 backdrop-blur-xl border border-border/40 shadow-sm">
+    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-3 px-6">
+      <nav
+        className="flex items-center justify-between h-14 px-6 rounded-2xl border border-white/20 shadow-sm"
+        style={{
+          width: "70%",
+          backgroundColor: "rgba(247, 244, 239, 0.45)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+        }}
+      >
 
         {/* Logo + Widget icon */}
         <a href="/" className="flex items-center gap-2 shrink-0">
@@ -15,7 +22,7 @@ const Navbar = () => {
           <img
             src={widgetIcon}
             alt="Widget"
-            className="w-6 h-6 object-contain opacity-85"
+            className="w-9 h-9 object-contain"
           />
         </a>
 
@@ -31,7 +38,7 @@ const Navbar = () => {
             FAQ
           </a>
 
-          {/* Demo button — brown bg, white text */}
+          {/* Demo pill */}
           <motion.a
             href="/demo"
             className="text-sm font-inter font-semibold rounded-full px-4 py-1.5 flex items-center gap-1.5 whitespace-nowrap"
@@ -51,7 +58,7 @@ const Navbar = () => {
           </motion.a>
         </div>
 
-        {/* Join the waitlist — brown bg, white text */}
+        {/* Join the waitlist */}
         <a
           href="#contact"
           className="inline-flex items-center justify-center rounded-full px-5 h-9 text-sm font-inter font-semibold shrink-0 transition-opacity hover:opacity-90"
