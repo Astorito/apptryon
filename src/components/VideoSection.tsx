@@ -2,14 +2,10 @@ const VideoSection = () => {
   return (
     <section className="section-padding">
       <div className="container flex justify-center">
-        <div className="w-full max-w-4xl aspect-video rounded-2xl overflow-hidden shadow-2xl">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/WrCrLKpvuqs?rel=0"
-            title="Try Look Demo Video"
-            className="w-full h-full border-0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
+        <div className="w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl">
+          <wistia-player
+            media-id="vnsn6vyzy5"
+            aspect="1.7777777777777777"
           />
         </div>
       </div>
