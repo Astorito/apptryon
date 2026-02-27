@@ -15,7 +15,7 @@ const Hero = () => {
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span className="text-sm font-inter font-medium text-muted-foreground">AI-Powered Virtual Try-On</span>
             </div>
-            
+
             <motion.h1
               className="text-4xl sm:text-5xl lg:text-6xl font-playfair leading-[1.1] tracking-tight text-foreground font-semibold"
               initial={{ y: -220, opacity: 0 }}
@@ -28,7 +28,10 @@ const Hero = () => {
               }}
               style={{ willChange: "transform" }}
             >
-              <span className="font-roboto inline-block" style={{ transform: "scale(1.26)", transformOrigin: "left center", display: "inline-block" }}>
+              <span
+                className="font-roboto inline-block"
+                style={{ transform: "scale(1.26)", transformOrigin: "left center", display: "inline-block" }}
+              >
                 <RotatingTypewriter speed={58} />
               </span>
               <br />
@@ -38,16 +41,12 @@ const Hero = () => {
             <p className="text-lg sm:text-xl font-inter text-muted-foreground max-w-lg leading-relaxed whitespace-nowrap">
               Turn visitors into buyers with instant virtual try-on
             </p>
-            
+
             <motion.div
               className="max-w-md space-y-2"
               initial={{ opacity: 0, filter: "blur(12px)", y: 20 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.3,
-                ease: "easeOut",
-              }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
               style={{ willChange: "transform" }}
             >
               <div className="flex items-center justify-between">
@@ -67,23 +66,30 @@ const Hero = () => {
                   className="absolute inset-0 rounded-full"
                   style={{
                     width: `${(9 / 15) * 100}%`,
-                    background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%)",
+                    background:
+                      "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%)",
                     backgroundSize: "200% 100%",
                     animation: "shimmer 2s infinite",
                   }}
                 />
               </div>
             </motion.div>
-            
-            <div className="flex flex-wrap gap-4">
+
+            <div className="flex flex-wrap gap-4 items-center">
+              {/* Primary CTA */}
               <Button asChild variant="cta" size="lg" className="rounded-full px-8 py-6 text-base">
                 <a href="#contact">Secure your spot</a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-full px-8 py-6 text-base border-foreground text-foreground bg-background hover:bg-foreground/5">
-                <a href="/demo" className="flex items-center gap-2">
-                  Try it live <ArrowRight className="w-4 h-4" />
-                </a>
-              </Button>
+
+              {/* Try it live — white bg, black border, black text */}
+              <a
+                href="/demo"
+                className="inline-flex items-center gap-2 rounded-full px-8 py-[14px] text-base font-medium font-inter
+                           bg-white text-black border-2 border-black
+                           hover:bg-black hover:text-white transition-colors duration-200"
+              >
+                Try it live <ArrowRight className="w-4 h-4" />
+              </a>
             </div>
 
             <p className="text-sm font-inter text-muted-foreground pt-2 italic">
@@ -91,7 +97,7 @@ const Hero = () => {
             </p>
           </div>
 
-          {/* Right content - Before/After Slider */}
+          {/* Right content — Before/After Slider with floating garments */}
           <div className="relative opacity-0 fade-up stagger-2">
             <BeforeAfterSlider />
           </div>
