@@ -7,6 +7,10 @@ import pantalon from "@/assets/pantalon.png";
 import campera from "@/assets/campera.png";
 import { CheckCircle } from "lucide-react";
 
+// Garment size: 154px
+// 25% overlap = 154 * 0.25 = ~38px inside the slider
+// So offset = 154 - 38 = 116px outside → -left-[116px] / -right-[116px]
+
 const BeforeAfterSlider = () => {
   const [sliderPos, setSliderPos] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -38,32 +42,39 @@ const BeforeAfterSlider = () => {
   return (
     <div className="relative w-full max-w-[410px] mx-auto">
 
-      {/* Garments: 154px (128 * 1.2), static, shadow only */}
+      {/* Top-left: Campera — overlaps 25% into left edge of slider */}
       <img
         src={campera}
         alt="Jacket"
-        className="absolute -left-[160px] top-6 w-[154px] h-[154px] object-contain rounded-2xl shadow-xl bg-white z-10 hidden lg:block"
+        className="absolute z-20 hidden lg:block rounded-2xl shadow-xl bg-white object-contain"
+        style={{ width: 154, height: 154, top: 24, left: -116 }}
       />
+      {/* Top-right: Camiseta — overlaps 25% into right edge */}
       <img
         src={camiseta}
         alt="T-shirt"
-        className="absolute -right-[160px] top-6 w-[154px] h-[154px] object-contain rounded-2xl shadow-xl bg-white z-10 hidden lg:block"
+        className="absolute z-20 hidden lg:block rounded-2xl shadow-xl bg-white object-contain"
+        style={{ width: 154, height: 154, top: 24, right: -116 }}
       />
+      {/* Bottom-left: Pantalon */}
       <img
         src={pantalon}
         alt="Pants"
-        className="absolute -left-[160px] bottom-24 w-[154px] h-[154px] object-contain rounded-2xl shadow-xl bg-white z-10 hidden lg:block"
+        className="absolute z-20 hidden lg:block rounded-2xl shadow-xl bg-white object-contain"
+        style={{ width: 154, height: 154, bottom: 96, left: -116 }}
       />
+      {/* Bottom-right: Zapatillas */}
       <img
         src={zapatillas}
         alt="Sneakers"
-        className="absolute -right-[160px] bottom-24 w-[154px] h-[154px] object-contain rounded-2xl shadow-xl bg-white z-10 hidden lg:block"
+        className="absolute z-20 hidden lg:block rounded-2xl shadow-xl bg-white object-contain"
+        style={{ width: 154, height: 154, bottom: 96, right: -116 }}
       />
 
-      {/* Slider container */}
+      {/* Slider container — z-10 so garments (z-20) render on top */}
       <div
         ref={containerRef}
-        className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden shadow-2xl cursor-col-resize select-none"
+        className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden shadow-2xl cursor-col-resize select-none z-10"
         onMouseMove={handleMouseMove}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
@@ -72,7 +83,7 @@ const BeforeAfterSlider = () => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleMouseUp}
       >
-        {/* AFTER — beige outfit, full width underneath */}
+        {/* AFTER — beige outfit */}
         <img
           src={modelBeige}
           alt="After - With outfit"
@@ -80,7 +91,7 @@ const BeforeAfterSlider = () => {
           draggable={false}
         />
 
-        {/* BEFORE — gray base model, clipped via clip-path (no distortion) */}
+        {/* BEFORE — gray base, clipped */}
         <img
           src={modelGray}
           alt="Before - Base"
