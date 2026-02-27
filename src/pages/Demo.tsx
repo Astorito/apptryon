@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const products = [
+  // Fila 1
   {
     id: 1,
     name: "Camiseta Básica Blanca",
@@ -28,6 +29,7 @@ const products = [
     price: "$129.99",
     image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&h=500&fit=crop",
   },
+  // Fila 2
   {
     id: 5,
     name: "Sudadera con Capucha",
@@ -52,6 +54,7 @@ const products = [
     price: "$74.99",
     image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=500&fit=crop",
   },
+  // Fila 3
   {
     id: 9,
     name: "Chaqueta de Cuero",
@@ -74,7 +77,82 @@ const products = [
     id: 12,
     name: "Vestido Cocktail",
     price: "$149.99",
-    image: "https://images.unsplash.com/photo-1566479179817-3de86e44bd7f?w=400&h=500&fit=crop",
+    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=500&fit=crop",
+  },
+  // Fila 4
+  {
+    id: 13,
+    name: "Cardigan de Punto",
+    price: "$64.99",
+    image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=500&fit=crop",
+  },
+  {
+    id: 14,
+    name: "Shorts Deportivos",
+    price: "$34.99",
+    image: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&h=500&fit=crop",
+  },
+  {
+    id: 15,
+    name: "Abrigo de Lana",
+    price: "$189.99",
+    image: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400&h=500&fit=crop",
+  },
+  {
+    id: 16,
+    name: "Top Crop",
+    price: "$24.99",
+    image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=400&h=500&fit=crop",
+  },
+  // Fila 5
+  {
+    id: 17,
+    name: "Traje Formal",
+    price: "$299.99",
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=400&h=500&fit=crop",
+  },
+  {
+    id: 18,
+    name: "Maxi Vestido",
+    price: "$99.99",
+    image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&h=500&fit=crop",
+  },
+  {
+    id: 19,
+    name: "Camisa Denim",
+    price: "$59.99",
+    image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=400&h=500&fit=crop",
+  },
+  {
+    id: 20,
+    name: "Pantalón Palazzo",
+    price: "$79.99",
+    image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&h=500&fit=crop",
+  },
+  // Fila 6
+  {
+    id: 21,
+    name: "Jersey Oversize",
+    price: "$54.99",
+    image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=500&fit=crop",
+  },
+  {
+    id: 22,
+    name: "Vestido Camisero",
+    price: "$84.99",
+    image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=500&fit=crop",
+  },
+  {
+    id: 23,
+    name: "Bomber Jacket",
+    price: "$109.99",
+    image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=500&fit=crop",
+  },
+  {
+    id: 24,
+    name: "Leggings Premium",
+    price: "$39.99",
+    image: "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=400&h=500&fit=crop",
   },
 ];
 
@@ -83,8 +161,12 @@ const Demo = () => {
 
   useEffect(() => {
     const scriptSrc = "https://try-on-cursor.vercel.app/api/widget";
+
+    // Remove old widget scripts if URL changed
     const oldScripts = document.querySelectorAll('script[src*="organic-space-fishstick"], script[src*="tryon-backend-definitivo"]');
     oldScripts.forEach(s => s.remove());
+
+    // Check if this exact script already exists
     const existingScript = document.querySelector(`script[src="${scriptSrc}"]`);
     if (!existingScript) {
       const script = document.createElement("script");
@@ -94,9 +176,9 @@ const Demo = () => {
       document.head.appendChild(script);
     }
 
-    // Show tooltip after 1.2s, hide after 6s
+    // Show tooltip after 1.2s, hide after 8s
     const showTimer = setTimeout(() => setShowTooltip(true), 1200);
-    const hideTimer = setTimeout(() => setShowTooltip(false), 7000);
+    const hideTimer = setTimeout(() => setShowTooltip(false), 8000);
     return () => { clearTimeout(showTimer); clearTimeout(hideTimer); };
   }, []);
 
@@ -105,7 +187,10 @@ const Demo = () => {
       {/* Header */}
       <header className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
         <div className="container flex items-center h-16">
-          <Link to="/" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+          <Link
+            to="/"
+            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+          >
             <ArrowLeft className="w-4 h-4" />
             <span className="font-inter text-sm">Volver</span>
           </Link>
@@ -118,6 +203,7 @@ const Demo = () => {
       {/* Main Content */}
       <div className="container py-8">
         <div className="max-w-4xl mx-auto">
+          {/* Products Grid */}
           <div>
             <h2 className="font-playfair text-2xl text-foreground mb-6">
               Selecciona un producto
@@ -143,8 +229,12 @@ const Demo = () => {
                     />
                   </div>
                   <div className="p-4">
-                    <h3 className="font-inter font-medium text-foreground text-sm">{product.name}</h3>
-                    <p className="font-inter text-muted-foreground text-sm mt-1">{product.price}</p>
+                    <h3 className="font-inter font-medium text-foreground text-sm">
+                      {product.name}
+                    </h3>
+                    <p className="font-inter text-muted-foreground text-sm mt-1">
+                      {product.price}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -153,69 +243,65 @@ const Demo = () => {
         </div>
       </div>
 
+      {/* Floating Widget Container - Bottom Right */}
       {/* Radial lines around widget */}
       <div className="fixed bottom-4 right-4 z-40 pointer-events-none flex items-center justify-center w-16 h-16">
         {Array.from({ length: 8 }).map((_, i) => (
           <motion.span
             key={i}
             className="absolute bg-primary/30 rounded-full"
-            style={{ width: 1.5, height: 18, transformOrigin: "center center", rotate: `${i * 45}deg`, translateY: -30 }}
+            style={{
+              width: 1.5,
+              height: 18,
+              transformOrigin: "center center",
+              rotate: `${i * 45}deg`,
+              translateY: -30,
+            }}
             animate={{ opacity: [0.15, 0.5, 0.15], scaleY: [0.7, 1, 0.7] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut", delay: i * 0.15 }}
+            transition={{
+              repeat: Infinity,
+              duration: 2,
+              ease: "easeInOut",
+              delay: i * 0.15,
+            }}
           />
         ))}
       </div>
 
-      {/* Animated tooltip — appears after 1.2s, disappears after 6s or on hover */}
+      {/* Animated tooltip — bouncing, appears after 1.2s, disappears after 8s */}
       <AnimatePresence>
         {showTooltip && (
-          <motion.div
-            className="fixed z-50 pointer-events-none"
-            style={{ bottom: 80, right: 16 }}
-            initial={{ opacity: 0, x: 20, y: 10 }}
-            animate={{ opacity: 1, x: 0, y: 0 }}
-            exit={{ opacity: 0, x: 16, y: 8 }}
-            transition={{ type: "spring", stiffness: 200, damping: 20 }}
-          >
-            {/* Tooltip bubble */}
-            <div
-              className="relative flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-inter font-semibold text-white shadow-xl"
-              style={{ backgroundColor: "hsl(28 31% 25%)", whiteSpace: "nowrap" }}
-            >
-              {/* Sparkle */}
-              <motion.span
-                animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.2, 1] }}
-                transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-                className="text-base"
-              >
-                ✨
-              </motion.span>
-              Try it here →
+          <div className="fixed z-50 pointer-events-none" style={{ bottom: 88, right: 12 }}>
 
-              {/* Arrow pointing down-right to widget */}
-              <div
-                className="absolute"
-                style={{
-                  bottom: -8,
-                  right: 20,
-                  width: 0,
-                  height: 0,
-                  borderLeft: "8px solid transparent",
-                  borderRight: "8px solid transparent",
-                  borderTop: "8px solid hsl(28 31% 25%)",
-                }}
-              />
-            </div>
-
-            {/* Bouncing arrow below tooltip */}
+            {/* Tooltip bubble — bounces up and down */}
             <motion.div
-              className="flex justify-end pr-6 mt-1"
-              animate={{ y: [0, 4, 0] }}
-              transition={{ repeat: Infinity, duration: 0.8, ease: "easeInOut" }}
+              animate={{ y: [0, -6, 0] }}
+              transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
             >
-              <span className="text-lg" style={{ color: "hsl(28 31% 45%)" }}>↓</span>
+              <div
+                className="flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-inter font-semibold text-white shadow-xl"
+                style={{ backgroundColor: "hsl(28 31% 25%)", whiteSpace: "nowrap" }}
+              >
+                <motion.span
+                  animate={{ scale: [1, 1.3, 1] }}
+                  transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                >
+                  ✨
+                </motion.span>
+                Try it here
+              </div>
             </motion.div>
-          </motion.div>
+
+            {/* Vertical bouncing arrow pointing down to widget */}
+            <motion.div
+              className="flex justify-center mt-1"
+              animate={{ y: [0, 5, 0] }}
+              transition={{ repeat: Infinity, duration: 0.75, ease: "easeInOut" }}
+            >
+              <span className="text-xl font-bold" style={{ color: "hsl(28 31% 35%)" }}>↓</span>
+            </motion.div>
+
+          </div>
         )}
       </AnimatePresence>
 
