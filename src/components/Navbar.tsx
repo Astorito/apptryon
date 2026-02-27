@@ -14,7 +14,7 @@ const Navbar = () => {
         }}
       >
 
-        {/* Logo + Widget icon */}
+        {/* Logo + Widget icon x2 (was w-9, now w-[72px]) */}
         <a href="/" className="flex items-center gap-2 shrink-0">
           <span className="text-xl font-playfair font-bold tracking-tight text-foreground">
             Try Look<span className="text-primary">.</span>
@@ -22,7 +22,8 @@ const Navbar = () => {
           <img
             src={widgetIcon}
             alt="Widget"
-            className="w-9 h-9 object-contain"
+            style={{ width: 72, height: 72 }}
+            className="object-contain"
           />
         </a>
 
