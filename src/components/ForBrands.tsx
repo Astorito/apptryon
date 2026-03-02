@@ -12,18 +12,18 @@ const integrations = [
 
 const ForBrands = () => {
   return (
-    <section id="for-brands" className="section-padding bg-card/50">
-      <div className="container">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <section id="for-brands" className="section-padding bg-card/50 overflow-hidden">
+      <div className="container px-4 md:px-6">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
           {/* Code preview */}
           <div className="order-2 lg:order-1">
-            <div className="rounded-2xl bg-foreground p-6 shadow-2xl">
+            <div className="rounded-2xl bg-foreground p-4 md:p-6 shadow-2xl overflow-hidden">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-3 h-3 rounded-full bg-destructive/60" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
                 <div className="w-3 h-3 rounded-full bg-green-500/60" />
               </div>
-              <pre className="text-sm overflow-x-auto">
+              <pre className="text-sm overflow-x-auto max-w-full">
                 <code className="text-primary-foreground/70">
                   <span className="text-primary-foreground/40">{"<!-- Add Try Look to your site -->"}</span>
                   {"\n"}
@@ -40,7 +40,7 @@ const ForBrands = () => {
           </div>
 
           {/* Content */}
-          <div className="order-1 lg:order-2 space-y-8">
+          <div className="order-1 lg:order-2 space-y-8 overflow-hidden">
             <div className="space-y-4">
               <span className="text-primary font-inter font-semibold text-sm uppercase tracking-wider">For Brands</span>
               <h2 className="text-3xl sm:text-4xl font-playfair font-normal tracking-tight text-foreground">
@@ -48,21 +48,21 @@ const ForBrands = () => {
                 <br />
                 <span className="text-gradient font-bold">Endless possibilities.</span>
               </h2>
-              <p className="text-lg font-inter text-muted-foreground leading-relaxed">
+              <p className="text-base md:text-lg font-inter text-muted-foreground leading-relaxed">
                 Integrate Try Look in minutes, not days. Our widget works seamlessly with all major e-commerce platforms.
               </p>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 gap-3">
               {integrations.map((platform) => {
                 const IconComponent = platform.icon;
                 return (
                   <div 
                     key={platform.name}
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl bg-background border border-border"
+                    className="flex items-center gap-2 px-3 py-3 rounded-xl bg-background border border-border overflow-hidden"
                   >
-                    <IconComponent className="w-5 h-5 text-primary" />
-                    <span className="text-sm font-inter font-medium text-foreground">{platform.name}</span>
+                    <IconComponent className="w-5 h-5 text-primary flex-shrink-0" />
+                    <span className="text-sm font-inter font-medium text-foreground truncate">{platform.name}</span>
                   </div>
                 );
               })}
