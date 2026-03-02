@@ -38,7 +38,7 @@ const Hero = () => {
               <span className="text-gradient text-5xl font-sans font-normal">Virtual Try On</span>
             </motion.h1>
 
-            <p className="text-lg sm:text-xl font-inter text-muted-foreground max-w-lg leading-relaxed whitespace-nowrap">
+            <p className="text-base sm:text-lg md:text-xl font-inter text-muted-foreground max-w-lg leading-relaxed">
               Turn visitors into buyers with instant virtual try-on
             </p>
 
@@ -75,7 +75,7 @@ const Hero = () => {
               </div>
             </motion.div>
 
-            <div className="flex flex-wrap gap-4 items-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
               {/* Primary CTA */}
               <Button asChild variant="cta" size="lg" className="rounded-full px-8 py-6 text-base">
                 <a href="#contact">Secure your spot</a>
@@ -84,9 +84,9 @@ const Hero = () => {
               {/* Try it live — white bg, black border, black text */}
               <a
                 href="/demo"
-                className="inline-flex items-center gap-2 rounded-full px-8 py-[14px] text-base font-medium font-inter
-                           bg-white text-black border-2 border-black
-                           hover:bg-black hover:text-white transition-colors duration-200"
+                className="inline-flex items-center gap-2 rounded-full px-6 sm:px-8 py-[14px] text-sm sm:text-base font-medium font-inter
+                           bg-background text-foreground border-2 border-foreground
+                           hover:bg-foreground hover:text-background transition-colors duration-200"
               >
                 Try it live <ArrowRight className="w-4 h-4" />
               </a>

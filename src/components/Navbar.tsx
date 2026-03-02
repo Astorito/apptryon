@@ -3,11 +3,10 @@ import widgetIcon from "@/assets/Widget.png";
 
 const Navbar = () => {
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-3 px-6">
+    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-3 px-3 md:px-6">
       <nav
-        className="flex items-center justify-between h-14 px-6 rounded-2xl border border-white/20"
+        className="flex items-center justify-between h-14 px-4 md:px-6 rounded-2xl border border-white/20 w-full md:w-[70%]"
         style={{
-          width: "70%",
           backgroundColor: "rgba(247, 244, 239, 0.45)",
           backdropFilter: "blur(16px)",
           WebkitBackdropFilter: "blur(16px)",
@@ -16,10 +15,10 @@ const Navbar = () => {
       >
         {/* Logo + Widget icon */}
         <a href="/" className="flex items-center gap-2 shrink-0">
-          <span className="text-xl font-playfair font-bold tracking-tight text-foreground">
+          <span className="text-lg md:text-xl font-playfair font-bold tracking-tight text-foreground">
             Try Look<span className="text-primary">.</span>
           </span>
-          <img src={widgetIcon} alt="Widget" style={{ width: 72, height: 72 }} className="object-contain" />
+          <img src={widgetIcon} alt="Widget" className="object-contain w-14 h-14 md:w-[72px] md:h-[72px]" />
         </a>
 
         {/* Nav links */}
@@ -56,7 +55,7 @@ const Navbar = () => {
         {/* Join the waitlist */}
         <a
           href="#contact"
-          className="inline-flex items-center justify-center rounded-full px-5 h-9 text-sm font-inter font-semibold shrink-0 transition-opacity hover:opacity-90"
+          className="inline-flex items-center justify-center rounded-full px-3 md:px-5 h-9 text-xs md:text-sm font-inter font-semibold shrink-0 transition-opacity hover:opacity-90 whitespace-nowrap"
           style={{ backgroundColor: "hsl(28 31% 45%)", color: "#fff" }}
         >
           Join the waitlist
