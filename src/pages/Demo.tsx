@@ -160,7 +160,8 @@ const Demo = () => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
-    const scriptSrc = "https://try-on-cursor.vercel.app/api/widget";
+    // Carga siempre desde nuestro dominio para evitar CORS en producción.
+    const scriptSrc = "/api/widget";
 
     // Remove old widget scripts if URL changed
     const oldScripts = document.querySelectorAll('script[src*="organic-space-fishstick"], script[src*="tryon-backend-definitivo"]');
