@@ -1,5 +1,5 @@
-const { proxyRequest } = require("../_proxy");
+import { proxyRequest } from "../_proxy.js";
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   await proxyRequest(req, res, "/api/images/upload");
-};
+}
