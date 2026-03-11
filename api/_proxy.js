@@ -2,12 +2,17 @@ const UPSTREAM = "https://try-on-cursor.vercel.app";
 
 /**
  * Proxy a request to the upstream backend.
- * Strips Origin/Referer so the upstream auth logic sees a server-side call.
+ * - Strips Origin/Referer from browser so the upstream sees a server-side call.
+ * - Replaces Origin with the upstream's own domain so any same-origin checks pass.
  */
 export async function proxyRequest(req, res, upstreamPath) {
   const method = req.method || "GET";
 
-  const headers = {};
+  const headers = {
+    // Spoof Origin to the upstream's own domain so its auth accepts the request.
+    "origin":  UPSTREAM,
+    "referer": UPSTREAM + "/",
+  };
   if (req.headers["content-type"]) headers["content-type"] = req.headers["content-type"];
   if (req.headers["accept"])        headers["accept"]        = req.headers["accept"];
   if (req.headers["authorization"]) headers["authorization"] = req.headers["authorization"];
