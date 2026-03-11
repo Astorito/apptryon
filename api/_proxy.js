@@ -1,0 +1,41 @@
+const UPSTREAM = "https://try-on-cursor.vercel.app";
+
+/**
+ * Proxy a request to the upstream backend, stripping Origin/Referer so the
+ * upstream auth logic sees a server-side call (no cross-origin context).
+ */
+async function proxyRequest(req, res, upstreamPath) {
+  const method = req.method || "GET";
+
+  // Only pass safe, non-origin headers.
+  const headers = {};
+  if (req.headers["content-type"]) headers["content-type"] = req.headers["content-type"];
+  if (req.headers["accept"])        headers["accept"]       = req.headers["accept"];
+  if (req.headers["authorization"]) headers["authorization"] = req.headers["authorization"];
+
+  const isBodyMethod = !["GET", "HEAD"].includes(method.toUpperCase());
+
+  try {
+    const upstreamRes = await fetch(`${UPSTREAM}${upstreamPath}`, {
+      method,
+      headers,
+      body: isBodyMethod ? JSON.stringify(req.body ?? {}) : undefined,
+    });
+
+    const ct = upstreamRes.headers.get("content-type") ?? "";
+    let body = await upstreamRes.text();
+
+    // For the widget script, rewrite upstream absolute URLs to relative ones
+    // so all subsequent widget API calls also go through this proxy.
+    if (ct.includes("javascript")) {
+      body = body.split(UPSTREAM + "/api/").join("/api/");
+    }
+
+    if (ct) res.setHeader("content-type", ct);
+    res.status(upstreamRes.status).send(body);
+  } catch (err) {
+    res.status(502).json({ error: "Upstream request failed", details: err.message });
+  }
+}
+
+module.exports = { proxyRequest };

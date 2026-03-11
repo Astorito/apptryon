@@ -160,7 +160,10 @@ const Demo = () => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
-    const scriptSrc = "https://try-on-cursor.vercel.app/api/widget";
+    // El widget se carga desde nuestro proxy: así BACKEND_URL queda en nuestro
+    // dominio y todas sus llamadas (generate, upload, proxy) pasan por las
+    // funciones serverless que reenvían sin el header Origin → resuelve el 401.
+    const scriptSrc = "/api/widget";
 
     // Remove old widget scripts if URL changed
     const oldScripts = document.querySelectorAll('script[src*="organic-space-fishstick"], script[src*="tryon-backend-definitivo"]');
