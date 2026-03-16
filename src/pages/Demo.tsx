@@ -175,7 +175,7 @@ const Demo = () => {
       const script = document.createElement("script");
       script.src = scriptSrc;
       script.async = true;
-      script.setAttribute("data-tryon-key", "tryon_mlqqsbsv_rhyiqjlu");
+      script.setAttribute("data-tryon-key", "tryon_mmtd5r46_vk0irkw0");
       document.head.appendChild(script);
     }
 
