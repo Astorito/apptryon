@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="flex min-h-screen flex-col overflow-x-hidden bg-background pt-16">
+    <section className="flex min-h-screen flex-col overflow-x-hidden bg-transparent pt-16">
       {/* Grid: izquierda ~mitad pantalla con padding alineado al container; derecha 50vw pegada al borde derecho */}
       <div className="grid min-h-[calc(100dvh-4rem)] flex-1 grid-cols-1 items-stretch gap-10 lg:grid-cols-[minmax(0,1fr)_50vw] lg:gap-0">
         {/* Left content — padding horizontal alineado con .container (max 1280px centrado) */}
@@ -98,7 +98,7 @@ const Hero = () => {
         </div>
 
         {/* Video: 50vw pegado al borde derecho del viewport */}
-        <div className="relative flex min-h-[min(70vh,520px)] w-full bg-background opacity-0 fade-up stagger-2 lg:min-h-[calc(100dvh-4rem)]">
+        <div className="relative flex min-h-[min(70vh,520px)] w-full bg-transparent opacity-0 fade-up stagger-2 lg:min-h-[calc(100dvh-4rem)]">
           <HeroLandingVideo />
         </div>
       </div>

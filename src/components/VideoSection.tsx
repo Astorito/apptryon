@@ -1,6 +1,6 @@
 const VideoSection = () => {
   return (
-    <section className="section-padding">
+    <section className="section-padding bg-background/55 backdrop-blur-sm">
       <div className="container flex justify-center">
         <div className="w-full max-w-4xl rounded-2xl overflow-hidden shadow-2xl">
           <div

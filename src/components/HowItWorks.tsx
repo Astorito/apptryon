@@ -30,7 +30,7 @@ const steps = [
 
 const HowItWorks = () => {
   return (
-    <section id="how-it-works" className="section-padding">
+    <section id="how-it-works" className="section-padding bg-background/55 backdrop-blur-sm">
       <div className="container">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-3xl sm:text-4xl font-playfair font-normal tracking-tight text-foreground">

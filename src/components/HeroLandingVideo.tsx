@@ -38,7 +38,7 @@ const HeroLandingVideo = () => {
 
   return (
     <div
-      className="relative h-full w-full min-h-[min(68vh,480px)] overflow-hidden bg-background lg:min-h-[calc(100dvh-4rem)]"
+      className="relative h-full w-full min-h-[min(68vh,480px)] overflow-hidden bg-transparent lg:min-h-[calc(100dvh-4rem)]"
     >
       <video
         ref={videoRef}
@@ -56,7 +56,7 @@ const HeroLandingVideo = () => {
       {/* Mismo tono que el fondo de la landing (evita línea / contraste con bg-white) */}
       {showIntroWhite && (
         <div
-          className="absolute inset-0 z-20 bg-background"
+          className="absolute inset-0 z-20 bg-background/90 backdrop-blur-[1px]"
           aria-hidden
         />
       )}

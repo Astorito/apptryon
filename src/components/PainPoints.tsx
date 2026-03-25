@@ -21,7 +21,7 @@ const painPoints = [
 
 const PainPoints = () => {
   return (
-    <section className="section-padding bg-background">
+    <section className="section-padding bg-background/70 backdrop-blur-sm">
       <div className="container max-w-5xl">
         <div className="text-center mb-12 space-y-4">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-playfair font-bold tracking-tight text-foreground leading-tight">

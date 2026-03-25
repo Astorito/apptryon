@@ -12,7 +12,7 @@ const integrations = [
 
 const ForBrands = () => {
   return (
-    <section id="for-brands" className="section-padding bg-card/50 overflow-hidden">
+    <section id="for-brands" className="section-padding overflow-hidden bg-card/45 backdrop-blur-sm">
       <div className="container px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
           {/* Code preview */}

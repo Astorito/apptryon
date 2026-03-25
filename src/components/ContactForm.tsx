@@ -19,7 +19,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-card/50">
+    <section id="contact" className="section-padding bg-card/45 backdrop-blur-sm">
       <div className="container max-w-xl">
         <AnimatePresence mode="wait">
           {isSubmitted ? (

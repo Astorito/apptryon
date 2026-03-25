@@ -22,7 +22,7 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <section id="faq" className="section-padding">
+    <section id="faq" className="section-padding bg-background/55 backdrop-blur-sm">
       <div className="container max-w-3xl">
         <div className="text-center mb-12 space-y-4">
           <h2 className="text-3xl sm:text-4xl font-playfair font-normal tracking-tight text-foreground">

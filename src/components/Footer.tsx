@@ -2,9 +2,9 @@ import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border">
+    <footer className="border-t border-border bg-background/40 backdrop-blur-sm">
       {/* CTA Section */}
-      <div className="section-padding bg-gradient-to-b from-background to-card/50">
+      <div className="section-padding bg-gradient-to-b from-background/75 to-card/45 backdrop-blur-sm">
         <div className="container text-center space-y-8">
           <h2 className="text-3xl sm:text-4xl font-playfair font-normal tracking-tight text-foreground">
             Ready to transform your
