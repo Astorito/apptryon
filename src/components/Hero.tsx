@@ -1,16 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import RotatingTypewriter from "@/components/RotatingTypewriter";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import HeroLandingVideo from "@/components/HeroLandingVideo";
 import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
     <section className="min-h-screen flex items-center pt-16">
       <div className="container">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch lg:min-h-[calc(100vh-5rem)]">
           {/* Left content */}
-          <div className="space-y-8 opacity-0 fade-up">
+          <div className="space-y-8 opacity-0 fade-up flex flex-col justify-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span className="text-sm font-inter font-medium text-muted-foreground">AI-Powered Virtual Try-On</span>
@@ -97,9 +97,9 @@ const Hero = () => {
             </p>
           </div>
 
-          {/* Right content — Before/After Slider with floating garments */}
-          <div className="relative opacity-0 fade-up stagger-2">
-            <BeforeAfterSlider />
+          {/* Right content — video full height, play a los 2s, último frame fijo */}
+          <div className="relative flex min-h-0 w-full opacity-0 fade-up stagger-2 lg:items-stretch">
+            <HeroLandingVideo />
           </div>
         </div>
       </div>
