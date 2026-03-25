@@ -3,34 +3,37 @@ import { useEffect, useRef, useState } from "react";
 /** Coloca tu archivo en public/hero-landing.mp4 */
 const VIDEO_SRC = "/hero-landing.mp4";
 
-const PLAY_DELAY_MS = 2000;
+/** Pantalla blanca antes de reproducir (ms) */
+const INTRO_WHITE_MS = 3000;
 
 const HeroLandingVideo = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [hasEnded, setHasEnded] = useState(false);
+  const [showIntroWhite, setShowIntroWhite] = useState(true);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     const startTimer = window.setTimeout(() => {
+      setShowIntroWhite(false);
       video.play().catch(() => {
-        // Autoplay puede fallar sin interacción; muted lo evita en la mayoría de navegadores
+        setShowIntroWhite(false);
       });
-    }, PLAY_DELAY_MS);
+    }, INTRO_WHITE_MS);
 
     return () => window.clearTimeout(startTimer);
   }, []);
 
+  /** Al terminar: pausa y deja fijo el último frame (sin loop, sin volver al inicio). */
   const handleEnded = () => {
     const video = videoRef.current;
     if (!video) return;
     video.pause();
-    // Fija el último frame (en algunos navegadores ayuda evitar pantalla negra al terminar)
-    if (Number.isFinite(video.duration) && video.duration > 0) {
-      video.currentTime = Math.max(0, video.duration - 0.05);
+    const d = video.duration;
+    if (Number.isFinite(d) && d > 0) {
+      // Unos ms antes del final = último frame decodificado (evita negro en algunos navegadores)
+      video.currentTime = Math.max(0, d - 0.05);
     }
-    setHasEnded(true);
   };
 
   return (
@@ -39,18 +42,20 @@ const HeroLandingVideo = () => {
     >
       <video
         ref={videoRef}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-contain object-center"
         src={VIDEO_SRC}
         muted
         playsInline
         preload="auto"
         loop={false}
+        controls={false}
         onEnded={handleEnded}
         aria-label="Video de presentación Try Look"
       />
-      {!hasEnded && (
+      {/* Intro: 3 s blanco; el video carga debajo pero no se ve hasta quitar el overlay */}
+      {showIntroWhite && (
         <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/10 to-transparent"
+          className="absolute inset-0 z-20 bg-white"
           aria-hidden
         />
       )}
