@@ -1,18 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import RotatingTypewriter from "@/components/RotatingTypewriter";
-import HeroLandingVideo from "@/components/HeroLandingVideo";
 import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
     <section className="flex min-h-screen flex-col overflow-x-hidden bg-transparent pt-16">
-      {/* Grid: izquierda ~mitad pantalla con padding alineado al container; derecha 50vw pegada al borde derecho */}
-      <div className="grid min-h-[calc(100dvh-4rem)] flex-1 grid-cols-1 items-stretch gap-10 lg:grid-cols-[minmax(0,1fr)_50vw] lg:gap-0">
-        {/* Left content — padding horizontal alineado con .container (max 1280px centrado) */}
-        <div
-          className="space-y-8 px-6 opacity-0 fade-up flex flex-col justify-center py-10 lg:py-0 lg:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] lg:pr-8"
-        >
+      <div className="container flex min-h-[calc(100dvh-4rem)] flex-1 flex-col justify-center py-10 lg:py-0">
+        <div className="max-w-2xl space-y-8 opacity-0 fade-up">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
             <span className="text-sm font-inter font-medium text-muted-foreground">AI-Powered Virtual Try-On</span>
@@ -95,11 +90,6 @@ const Hero = () => {
           <p className="text-sm font-inter text-muted-foreground pt-2 italic">
             *Prices increase automatically when 15 brands join
           </p>
-        </div>
-
-        {/* Video: 50vw pegado al borde derecho del viewport */}
-        <div className="relative flex min-h-[min(70vh,520px)] w-full bg-transparent opacity-0 fade-up stagger-2 lg:min-h-[calc(100dvh-4rem)]">
-          <HeroLandingVideo />
         </div>
       </div>
     </section>
