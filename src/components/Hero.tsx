@@ -6,101 +6,100 @@ import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center pt-16">
-      <div className="container">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch lg:min-h-[calc(100vh-5rem)]">
-          {/* Left content */}
-          <div className="space-y-8 opacity-0 fade-up flex flex-col justify-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-inter font-medium text-muted-foreground">AI-Powered Virtual Try-On</span>
-            </div>
-
-            <motion.h1
-              className="text-4xl sm:text-5xl lg:text-6xl font-playfair leading-[1.1] tracking-tight text-foreground font-semibold"
-              initial={{ y: -220, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{
-                type: "spring",
-                stiffness: 120,
-                damping: 14,
-                mass: 0.9,
-              }}
-              style={{ willChange: "transform" }}
-            >
-              <span
-                className="font-roboto inline-block"
-                style={{ transform: "scale(1.26)", transformOrigin: "left center", display: "inline-block" }}
-              >
-                <RotatingTypewriter speed={58} />
-              </span>
-              <br />
-              <span className="text-gradient text-5xl font-sans font-normal">Virtual Try On</span>
-            </motion.h1>
-
-            <p className="text-base sm:text-lg md:text-xl font-inter text-muted-foreground max-w-lg leading-relaxed">
-              Turn visitors into buyers with instant virtual try-on
-            </p>
-
-            <motion.div
-              className="max-w-md space-y-2"
-              initial={{ opacity: 0, filter: "blur(12px)", y: 20 }}
-              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              style={{ willChange: "transform" }}
-            >
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-inter font-semibold text-primary tracking-wide">Early Access</span>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-sans font-bold text-foreground">9</span>
-                  <span className="text-lg text-muted-foreground font-sans">/ 15</span>
-                  <span className="text-xs font-sans font-semibold text-muted-foreground tracking-widest ml-1">BRANDS</span>
-                </div>
-              </div>
-              <div className="relative h-3 w-full rounded-full bg-secondary overflow-hidden">
-                <div
-                  className="h-full rounded-full bg-gradient-to-r from-primary to-primary/70 transition-all"
-                  style={{ width: `${(9 / 15) * 100}%` }}
-                />
-                <div
-                  className="absolute inset-0 rounded-full"
-                  style={{
-                    width: `${(9 / 15) * 100}%`,
-                    background:
-                      "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%)",
-                    backgroundSize: "200% 100%",
-                    animation: "shimmer 2s infinite",
-                  }}
-                />
-              </div>
-            </motion.div>
-
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
-              {/* Primary CTA */}
-              <Button asChild variant="cta" size="lg" className="rounded-full px-8 py-6 text-base">
-                <a href="#contact">Secure your spot</a>
-              </Button>
-
-              {/* Try it live — white bg, black border, black text */}
-              <a
-                href="/demo"
-                className="inline-flex items-center gap-2 rounded-full px-6 sm:px-8 py-[14px] text-sm sm:text-base font-medium font-inter
-                           bg-background text-foreground border-2 border-foreground
-                           hover:bg-foreground hover:text-background transition-colors duration-200"
-              >
-                Try it live <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-
-            <p className="text-sm font-inter text-muted-foreground pt-2 italic">
-              *Prices increase automatically when 15 brands join
-            </p>
+    <section className="flex min-h-screen flex-col overflow-x-hidden pt-16">
+      {/* Grid: izquierda ~mitad pantalla con padding alineado al container; derecha 50vw pegada al borde derecho */}
+      <div className="grid min-h-[calc(100dvh-4rem)] flex-1 grid-cols-1 items-stretch gap-10 lg:grid-cols-[minmax(0,1fr)_50vw] lg:gap-0">
+        {/* Left content — padding horizontal alineado con .container (max 1280px centrado) */}
+        <div
+          className="space-y-8 px-6 opacity-0 fade-up flex flex-col justify-center py-10 lg:py-0 lg:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] lg:pr-8"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-sm font-inter font-medium text-muted-foreground">AI-Powered Virtual Try-On</span>
           </div>
 
-          {/* Right content — video full height, play a los 2s, último frame fijo */}
-          <div className="relative flex min-h-0 w-full opacity-0 fade-up stagger-2 lg:items-stretch">
-            <HeroLandingVideo />
+          <motion.h1
+            className="text-4xl sm:text-5xl lg:text-6xl font-playfair leading-[1.1] tracking-tight text-foreground font-semibold"
+            initial={{ y: -220, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 120,
+              damping: 14,
+              mass: 0.9,
+            }}
+            style={{ willChange: "transform" }}
+          >
+            <span
+              className="font-roboto inline-block"
+              style={{ transform: "scale(1.26)", transformOrigin: "left center", display: "inline-block" }}
+            >
+              <RotatingTypewriter speed={58} />
+            </span>
+            <br />
+            <span className="text-gradient text-5xl font-sans font-normal">Virtual Try On</span>
+          </motion.h1>
+
+          <p className="text-base sm:text-lg md:text-xl font-inter text-muted-foreground max-w-lg leading-relaxed">
+            Turn visitors into buyers with instant virtual try-on
+          </p>
+
+          <motion.div
+            className="max-w-md space-y-2"
+            initial={{ opacity: 0, filter: "blur(12px)", y: 20 }}
+            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            style={{ willChange: "transform" }}
+          >
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-inter font-semibold text-primary tracking-wide">Early Access</span>
+              <div className="flex items-baseline gap-1">
+                <span className="text-2xl font-sans font-bold text-foreground">9</span>
+                <span className="text-lg text-muted-foreground font-sans">/ 15</span>
+                <span className="text-xs font-sans font-semibold text-muted-foreground tracking-widest ml-1">BRANDS</span>
+              </div>
+            </div>
+            <div className="relative h-3 w-full rounded-full bg-secondary overflow-hidden">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-primary to-primary/70 transition-all"
+                style={{ width: `${(9 / 15) * 100}%` }}
+              />
+              <div
+                className="absolute inset-0 rounded-full"
+                style={{
+                  width: `${(9 / 15) * 100}%`,
+                  background:
+                    "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%)",
+                  backgroundSize: "200% 100%",
+                  animation: "shimmer 2s infinite",
+                }}
+              />
+            </div>
+          </motion.div>
+
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
+            <Button asChild variant="cta" size="lg" className="rounded-full px-8 py-6 text-base">
+              <a href="#contact">Secure your spot</a>
+            </Button>
+
+            <a
+              href="/demo"
+              className="inline-flex items-center gap-2 rounded-full px-6 sm:px-8 py-[14px] text-sm sm:text-base font-medium font-inter
+                         bg-background text-foreground border-2 border-foreground
+                         hover:bg-foreground hover:text-background transition-colors duration-200"
+            >
+              Try it live <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
+
+          <p className="text-sm font-inter text-muted-foreground pt-2 italic">
+            *Prices increase automatically when 15 brands join
+          </p>
+        </div>
+
+        {/* Video: 50vw, borde derecho = borde del viewport */}
+        <div className="relative flex min-h-[min(70vh,520px)] w-full opacity-0 fade-up stagger-2 lg:min-h-[calc(100dvh-4rem)]">
+          <HeroLandingVideo />
         </div>
       </div>
     </section>

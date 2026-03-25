@@ -35,8 +35,7 @@ const HeroLandingVideo = () => {
 
   return (
     <div
-      className="relative w-full overflow-hidden rounded-2xl border border-border bg-muted shadow-2xl
-                 h-[min(75vh,640px)] sm:h-[min(82vh,720px)] lg:h-[calc(100dvh-7rem)] lg:min-h-[520px]"
+      className="relative h-full w-full min-h-[min(68vh,480px)] overflow-hidden bg-background lg:min-h-[calc(100dvh-4rem)]"
     >
       <video
         ref={videoRef}
@@ -51,7 +50,7 @@ const HeroLandingVideo = () => {
       />
       {!hasEnded && (
         <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/20 to-transparent"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/10 to-transparent"
           aria-hidden
         />
       )}
