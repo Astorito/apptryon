@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 /** Coloca tu archivo en public/hero-landing.mp4 */
 const VIDEO_SRC = "/hero-landing.mp4";
 
-/** Pantalla blanca antes de reproducir (ms) */
-const INTRO_WHITE_MS = 3000;
+/** Overlay del mismo color que la landing antes de reproducir (ms) */
+const INTRO_OVERLAY_MS = 3000;
 
 const HeroLandingVideo = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -19,7 +19,7 @@ const HeroLandingVideo = () => {
       video.play().catch(() => {
         setShowIntroWhite(false);
       });
-    }, INTRO_WHITE_MS);
+    }, INTRO_OVERLAY_MS);
 
     return () => window.clearTimeout(startTimer);
   }, []);
@@ -42,7 +42,7 @@ const HeroLandingVideo = () => {
     >
       <video
         ref={videoRef}
-        className="absolute inset-0 h-full w-full object-contain object-center"
+        className="absolute inset-0 h-full w-full object-contain object-right"
         src={VIDEO_SRC}
         muted
         playsInline
@@ -53,9 +53,10 @@ const HeroLandingVideo = () => {
         aria-label="Video de presentación Try Look"
       />
       {/* Intro: 3 s blanco; el video carga debajo pero no se ve hasta quitar el overlay */}
+      {/* Mismo tono que el fondo de la landing (evita línea / contraste con bg-white) */}
       {showIntroWhite && (
         <div
-          className="absolute inset-0 z-20 bg-white"
+          className="absolute inset-0 z-20 bg-background"
           aria-hidden
         />
       )}
