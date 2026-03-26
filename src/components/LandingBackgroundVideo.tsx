@@ -1,10 +1,24 @@
 /**
  * Video de fondo de toda la landing (detrás de todo el contenido).
- * Archivo: public/landing-bg.mp4 — sin sonido, loop, autoplay.
+ * Archivo: public/landing-bg.mp4 — sin sonido, autoplay, sin loop; al terminar queda fijo en el último frame.
  */
 const BG_VIDEO_SRC = "/landing-bg.mp4";
 
-const LandingBackgroundVideo = () => {
+type Props = {
+  onVideoEnded?: () => void;
+};
+
+const LandingBackgroundVideo = ({ onVideoEnded }: Props) => {
+  const handleEnded = (e: React.SyntheticEvent<HTMLVideoElement>) => {
+    const v = e.currentTarget;
+    v.pause();
+    const d = v.duration;
+    if (Number.isFinite(d) && d > 0) {
+      v.currentTime = Math.max(0, d - 0.05);
+    }
+    onVideoEnded?.();
+  };
+
   return (
     <div
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
@@ -15,9 +29,10 @@ const LandingBackgroundVideo = () => {
         src={BG_VIDEO_SRC}
         autoPlay
         muted
-        loop
         playsInline
         preload="auto"
+        onEnded={handleEnded}
+        aria-label=""
       />
     </div>
   );
