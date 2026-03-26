@@ -12,8 +12,14 @@ const ASSETS = {
   final: "/tryon-flow/final.png",
 } as const;
 
-const GARMENT_STAGGER_MS = 360;
-const FINAL_DELAY_AFTER_LAST_MS = 420;
+/** Espera tras entrar en viewport antes del primer garment. */
+const SEQUENCE_START_DELAY_MS = 700;
+/** Tiempo entre garment 1 → 2 → 3 (más lento). */
+const GARMENT_STAGGER_MS = 520;
+/** Tras el 3.er garment, antes de la imagen final. */
+const FINAL_DELAY_AFTER_LAST_MS = 600;
+/** Ancho base del primer garment (rem); 10 = 2× respecto al diseño anterior (5). */
+const GARMENT_BASE_REM = 10;
 
 const CARD_SHADOW =
   "0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.08)";
@@ -74,12 +80,13 @@ const TryOnFlowSection = () => {
       return;
     }
 
-    const t1 = window.setTimeout(() => setG1(true), 0);
-    const t2 = window.setTimeout(() => setG2(true), GARMENT_STAGGER_MS);
-    const t3 = window.setTimeout(() => setG3(true), GARMENT_STAGGER_MS * 2);
+    const start = SEQUENCE_START_DELAY_MS;
+    const t1 = window.setTimeout(() => setG1(true), start);
+    const t2 = window.setTimeout(() => setG2(true), start + GARMENT_STAGGER_MS);
+    const t3 = window.setTimeout(() => setG3(true), start + GARMENT_STAGGER_MS * 2);
     const t4 = window.setTimeout(
       () => setFinalShow(true),
-      GARMENT_STAGGER_MS * 2 + FINAL_DELAY_AFTER_LAST_MS,
+      start + GARMENT_STAGGER_MS * 2 + FINAL_DELAY_AFTER_LAST_MS,
     );
 
     return () => {
@@ -131,10 +138,10 @@ const TryOnFlowSection = () => {
           </motion.div>
 
           {/* Garments: cada uno ~20% más ancho; solape ~20% del ancho de cada tarjeta */}
-          <div className="flex min-h-[200px] items-end justify-center py-4 md:min-h-[240px] md:flex-1 md:py-0">
-            <div className="flex items-end justify-center">
+          <div className="flex w-full min-h-[280px] items-end justify-center overflow-x-auto overflow-y-visible py-4 md:min-h-[360px] md:flex-1 md:py-0">
+            <div className="flex min-w-min items-end justify-center px-1">
               {ASSETS.garments.map((src, i) => {
-                const baseRem = 5;
+                const baseRem = GARMENT_BASE_REM;
                 const widthRem = baseRem * Math.pow(1.2, i);
                 const overlapRem = i === 0 ? 0 : 0.2 * (baseRem * Math.pow(1.2, i));
                 return (
@@ -155,9 +162,9 @@ const TryOnFlowSection = () => {
                     }}
                     transition={{
                       type: "spring",
-                      stiffness: 380,
-                      damping: 26,
-                      mass: 0.65,
+                      stiffness: 260,
+                      damping: 28,
+                      mass: 0.85,
                     }}
                   >
                     <div
@@ -190,8 +197,8 @@ const TryOnFlowSection = () => {
             }
             transition={{
               type: "spring",
-              stiffness: 280,
-              damping: 22,
+              stiffness: 220,
+              damping: 24,
             }}
           >
             <div className="relative aspect-[3/4] w-full">
