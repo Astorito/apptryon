@@ -21,6 +21,9 @@ const FINAL_DELAY_AFTER_LAST_MS = 600;
 /** Ancho base del primer garment (rem); 10 = 2× respecto al diseño anterior (5). */
 const GARMENT_BASE_REM = 10;
 
+/** Initial / final: 220px × 1.2 */
+const MODEL_CARD_MAX_PX = 264;
+
 const CARD_SHADOW =
   "0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.08)";
 
@@ -118,10 +121,10 @@ const TryOnFlowSection = () => {
 
       <div className="relative z-10 container max-w-6xl">
         <div className="flex flex-col items-center justify-center gap-10 md:flex-row md:items-center md:justify-between md:gap-6 lg:gap-10">
-          {/* Inicial — visible al entrar en viewport */}
+          {/* Inicial — visible al entrar en viewport; misma línea media vertical que garments y final */}
           <motion.div
-            className="relative w-full max-w-[220px] shrink-0 overflow-hidden rounded-2xl bg-card"
-            style={{ boxShadow: CARD_SHADOW }}
+            className="relative w-full shrink-0 overflow-hidden rounded-2xl bg-card"
+            style={{ maxWidth: MODEL_CARD_MAX_PX, boxShadow: CARD_SHADOW }}
             initial={{ opacity: 0.85, y: 8 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.45, ease: "easeOut" }}
@@ -137,9 +140,9 @@ const TryOnFlowSection = () => {
             </div>
           </motion.div>
 
-          {/* Garments: cada uno ~20% más ancho; solape ~20% del ancho de cada tarjeta */}
-          <div className="flex w-full min-h-[280px] items-end justify-center overflow-x-auto overflow-y-visible py-4 md:min-h-[360px] md:flex-1 md:py-0">
-            <div className="flex min-w-min items-end justify-center px-1">
+          {/* Garments: centrados en altura respecto a initial/final (items-center en fila + en el stack) */}
+          <div className="flex w-full flex-1 items-center justify-center overflow-x-auto overflow-y-visible py-4 md:min-h-0 md:py-0">
+            <div className="flex min-w-min items-center justify-center px-1">
               {ASSETS.garments.map((src, i) => {
                 const baseRem = GARMENT_BASE_REM;
                 const widthRem = baseRem * Math.pow(1.2, i);
@@ -187,8 +190,8 @@ const TryOnFlowSection = () => {
 
           {/* Final + brillitos */}
           <motion.div
-            className="relative w-full max-w-[220px] shrink-0 overflow-hidden rounded-2xl bg-card"
-            style={{ boxShadow: CARD_SHADOW }}
+            className="relative w-full shrink-0 overflow-hidden rounded-2xl bg-card"
+            style={{ maxWidth: MODEL_CARD_MAX_PX, boxShadow: CARD_SHADOW }}
             initial={false}
             animate={
               finalShow
