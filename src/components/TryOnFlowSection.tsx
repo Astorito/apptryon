@@ -63,8 +63,13 @@ function SparkleOverlay({ active }: { active: boolean }) {
 }
 
 const TryOnFlowSection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.28 });
+  /** Solo la fila de contenido (initial / garments / final): evita disparar con % del section entero. */
+  const animationTriggerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(animationTriggerRef, {
+    once: true,
+    amount: 0.55,
+    margin: "0px 0px -12% 0px",
+  });
   const reduceMotion = useReducedMotion();
 
   const [g1, setG1] = useState(false);
@@ -103,10 +108,7 @@ const TryOnFlowSection = () => {
   const garmentVisible = [g1, g2, g3];
 
   return (
-    <section
-      ref={sectionRef}
-      className="section-padding relative overflow-hidden bg-muted/40 backdrop-blur-sm"
-    >
+    <section className="section-padding relative overflow-hidden bg-muted/40 backdrop-blur-sm">
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.4]"
         aria-hidden
@@ -120,13 +122,16 @@ const TryOnFlowSection = () => {
       />
 
       <div className="relative z-10 container max-w-6xl">
-        <div className="flex flex-col items-center justify-center gap-10 md:flex-row md:items-center md:justify-between md:gap-6 lg:gap-10">
-          {/* Inicial — visible al entrar en viewport; misma línea media vertical que garments y final */}
+        <div
+          ref={animationTriggerRef}
+          className="flex flex-col items-center justify-center gap-10 md:flex-row md:items-center md:justify-between md:gap-6 lg:gap-10"
+        >
+          {/* Inicial — anima solo cuando esta fila entra en vista */}
           <motion.div
             className="relative w-full shrink-0 overflow-hidden rounded-2xl bg-card"
             style={{ maxWidth: MODEL_CARD_MAX_PX, boxShadow: CARD_SHADOW }}
-            initial={{ opacity: 0.85, y: 8 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            initial={{ opacity: 0, y: 12 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
             transition={{ duration: 0.45, ease: "easeOut" }}
           >
             <div className="aspect-[3/4] w-full">
@@ -140,9 +145,9 @@ const TryOnFlowSection = () => {
             </div>
           </motion.div>
 
-          {/* Garments: centrados en altura respecto a initial/final (items-center en fila + en el stack) */}
-          <div className="flex w-full flex-1 items-center justify-center overflow-x-auto overflow-y-visible py-4 md:min-h-0 md:py-0">
-            <div className="flex min-w-min items-center justify-center px-1">
+          {/* Garments: sin scrollbars (overflow hidden + min-w-0 en flex) */}
+          <div className="flex w-full min-w-0 flex-1 items-center justify-center overflow-hidden py-4 md:min-h-0 md:py-0">
+            <div className="flex max-w-full min-w-0 items-center justify-center px-1">
               {ASSETS.garments.map((src, i) => {
                 const baseRem = GARMENT_BASE_REM;
                 const widthRem = baseRem * Math.pow(1.2, i);
