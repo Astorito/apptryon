@@ -149,4 +149,49 @@
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
   }
+
+  @keyframes tryon-sparkle-burst {
+    0% {
+      opacity: 0;
+      transform: scale(0.2);
+    }
+    35% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.4);
+    }
+  }
+
+  @keyframes tryon-shimmer-sweep {
+    0% {
+      opacity: 0;
+      background-position: 120% 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      background-position: -40% 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    @keyframes tryon-sparkle-burst {
+      0%,
+      100% {
+        opacity: 0.6;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes tryon-shimmer-sweep {
+      0%,
+      100% {
+        opacity: 0;
+      }
+    }
+  }
 }

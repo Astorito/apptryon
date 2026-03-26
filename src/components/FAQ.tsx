@@ -8,7 +8,7 @@ import {
 const faqs = [
   {
     question: "¿How do I install it?",
-    answer: "Yo me encargo de instalarlo por ti. En menos de 3 días tendrás Try Look funcionando en tu sitio web. Solo necesitas proporcionarme acceso a tu plataforma.",
+    answer: "I'll take care of installing it for you. In one day, you'll have Try Look up and running on your website. You just need to give me access to your platform.",
   },
   {
     question: "¿Can I integrate with e-commerce platforms?",

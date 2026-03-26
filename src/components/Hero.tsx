@@ -1,12 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import RotatingTypewriter from "@/components/RotatingTypewriter";
+import LandingGarmentBoxes from "@/components/LandingGarmentBoxes";
 import { ArrowRight } from "lucide-react";
 
-const Hero = () => {
+type HeroProps = {
+  /** Tras el último frame del video de fondo: muestra prendas (solo en esta sección, hace scroll con el hero). */
+  garmentsVisible?: boolean;
+};
+
+const Hero = ({ garmentsVisible = false }: HeroProps) => {
   return (
-    <section className="flex min-h-screen flex-col overflow-x-hidden bg-transparent pt-16">
-      <div className="container flex min-h-[calc(100dvh-4rem)] flex-1 flex-col justify-center py-10 lg:py-0">
+    <section className="relative flex min-h-screen flex-col overflow-x-hidden bg-transparent pt-16">
+      <div className="relative z-10 container flex min-h-[calc(100dvh-4rem)] flex-1 flex-col justify-center py-10 lg:py-0">
         <div className="max-w-2xl space-y-8 opacity-0 fade-up">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
@@ -92,6 +98,7 @@ const Hero = () => {
           </p>
         </div>
       </div>
+      <LandingGarmentBoxes visible={garmentsVisible} />
     </section>
   );
 };

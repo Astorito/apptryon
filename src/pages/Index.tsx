@@ -2,9 +2,9 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import LandingBackgroundVideo from "@/components/LandingBackgroundVideo";
-import LandingGarmentBoxes from "@/components/LandingGarmentBoxes";
 import VideoSection from "@/components/VideoSection";
 import PainPoints from "@/components/PainPoints";
+import TryOnFlowSection from "@/components/TryOnFlowSection";
 import HowItWorks from "@/components/HowItWorks";
 import ForBrands from "@/components/ForBrands";
 import FAQ from "@/components/FAQ";
@@ -17,12 +17,12 @@ const Index = () => {
   return (
     <main className="relative min-h-screen">
       <LandingBackgroundVideo onVideoEnded={() => setVideoEnded(true)} />
-      <LandingGarmentBoxes visible={videoEnded} />
       <div className="relative z-10">
         <Navbar />
-        <Hero />
+        <Hero garmentsVisible={videoEnded} />
         <VideoSection />
         <PainPoints />
+        <TryOnFlowSection />
         <HowItWorks />
         <ForBrands />
         <FAQ />
