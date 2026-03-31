@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { PageMeta } from "@/components/seo/PageMeta";
+import { DEMO_PAGE_DESCRIPTION, DEMO_PAGE_TITLE } from "@/lib/siteSeo";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -186,7 +188,9 @@ const Demo = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <PageMeta title={DEMO_PAGE_TITLE} description={DEMO_PAGE_DESCRIPTION} path="/demo" />
+      <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50">
         <div className="container flex items-center h-16">
@@ -309,7 +313,8 @@ const Demo = () => {
       </AnimatePresence>
 
       <div id="tryon-widget-container" className="fixed bottom-4 right-4 z-50" />
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -68,6 +68,7 @@ export function IntegrationLayout({
         <meta property="og:locale" content="en_US" />
 
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@TryLookAI" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={metaDescription} />
         <meta name="twitter:image" content={defaultOgImage} />
