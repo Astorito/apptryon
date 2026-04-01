@@ -11,7 +11,9 @@ export type IntegrationPageConfig = {
   metaDescription: string;
   /** Path segment only, e.g. /shopify-virtual-try-on */
   path: string;
-  heroImageUrl: string;
+  heroImageBeforeUrl: string;
+  heroImageAfterUrl: string;
+  /** Combined alt for the comparison (SEO + a11y) */
   heroImageAlt: string;
   /** Short line on the image pill (outfit / AI focus) */
   heroOverlayLabel: string;
@@ -24,20 +26,34 @@ const OG_FALLBACK =
 
 export const TRYLOOK_MAIN_URL = "https://www.trylook-ai.com/" as const;
 
-/** Distinct Unsplash scenes: different models and outfits per integration page */
-const IMG = {
-  shopify:
-    "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&h=900&fit=crop&q=80",
-  woocommerce:
-    "https://images.unsplash.com/photo-1496747611176-8432226b57ba?w=900&h=900&fit=crop&q=80",
-  webflow:
-    "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=900&h=900&fit=crop&q=80",
-  tiendanube:
-    "https://images.unsplash.com/photo-1515372039744-b8f02a3cd446?w=900&h=900&fit=crop&q=80",
-  mercadoshops:
-    "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=900&h=900&fit=crop&q=80",
-  hostinger:
-    "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&h=900&fit=crop&q=80",
+const Q = "w=900&h=900&fit=crop&q=80";
+
+/** Before / after pairs (casual or catalog → elevated look) per integration page */
+const PAIR = {
+  shopify: {
+    before: `https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?${Q}`,
+    after: `https://images.unsplash.com/photo-1595777457583-95e059d581b8?${Q}`,
+  },
+  woocommerce: {
+    before: `https://images.unsplash.com/photo-1496747611176-8432226b57ba?${Q}`,
+    after: `https://images.unsplash.com/photo-1594633313593-beab792a0e84?${Q}`,
+  },
+  webflow: {
+    before: `https://images.unsplash.com/photo-1524504388940-b1c1722653e1?${Q}`,
+    after: `https://images.unsplash.com/photo-1539109136881-3be0616acf4b?${Q}`,
+  },
+  tiendanube: {
+    before: `https://images.unsplash.com/photo-1515372039744-b8f02a3cd446?${Q}`,
+    after: `https://images.unsplash.com/photo-1469334031218-e382a71b716b?${Q}`,
+  },
+  mercadoshops: {
+    before: `https://images.unsplash.com/photo-1483985988355-763728e1935b?${Q}`,
+    after: `https://images.unsplash.com/photo-1490481651871-ab68de25d43d?${Q}`,
+  },
+  hostinger: {
+    before: `https://images.unsplash.com/photo-1441986300917-64674bd600d8?${Q}`,
+    after: `https://images.unsplash.com/photo-1445205170230-053b83016050?${Q}`,
+  },
 } as const;
 
 export const seoIntegrationPages = {
@@ -51,9 +67,10 @@ export const seoIntegrationPages = {
     pageTitle: "Virtual Try-On Plugin for Shopify | TryLook-ai",
     metaDescription:
       "Boost Shopify conversions and cut returns with TryLook-ai: AI virtual try-on, no code, fast load times. Let shoppers see clothes on themselves before they buy.",
-    heroImageUrl: IMG.shopify,
+    heroImageBeforeUrl: PAIR.shopify.before,
+    heroImageAfterUrl: PAIR.shopify.after,
     heroImageAlt:
-      "Model in a yellow crop top and wide-leg trousers — virtual try-on preview for a Shopify fashion store.",
+      "Before and after virtual try-on: streetwear look versus evening dress for a Shopify fashion store.",
     heroOverlayLabel: "Outfit preview: streetwear → evening",
     trustLine: "Top rated virtual try-on experience",
   },
@@ -67,9 +84,10 @@ export const seoIntegrationPages = {
     pageTitle: "Virtual Try-On Plugin for WooCommerce | TryLook-ai",
     metaDescription:
       "Add TryLook-ai to WooCommerce in minutes: AI virtual fitting for WordPress stores. Lift AOV, cut returns, and give shoppers confidence to buy.",
-    heroImageUrl: IMG.woocommerce,
+    heroImageBeforeUrl: PAIR.woocommerce.before,
+    heroImageAfterUrl: PAIR.woocommerce.after,
     heroImageAlt:
-      "Model on a runway in a flowing dress — WooCommerce store virtual fitting room context.",
+      "Before and after virtual try-on: runway styling versus boutique evening look for WooCommerce.",
     heroOverlayLabel: "Look swap: runway → everyday",
     trustLine: "Built for WordPress merchants",
   },
@@ -83,9 +101,10 @@ export const seoIntegrationPages = {
     pageTitle: "Virtual Try-On for Webflow E-commerce | TryLook-ai",
     metaDescription:
       "TryLook-ai for Webflow: lightweight AI virtual try-on via embed. Keep your design, add real-time fitting, and convert more browsers into buyers.",
-    heroImageUrl: IMG.webflow,
+    heroImageBeforeUrl: PAIR.webflow.before,
+    heroImageAfterUrl: PAIR.webflow.after,
     heroImageAlt:
-      "Portrait of a model in a black blazer — editorial look for a Webflow storefront preview.",
+      "Before and after virtual try-on: editorial portrait versus bold street style for Webflow stores.",
     heroOverlayLabel: "Style: editorial → casual layers",
     trustLine: "Embeds without breaking your grid",
   },
@@ -98,9 +117,10 @@ export const seoIntegrationPages = {
     pageTitle: "Virtual Try-On for Tiendanube | TryLook-ai",
     metaDescription:
       "TryLook-ai for Tiendanube (Nuvemshop): virtual try-on from a photo. Build trust, reduce sizing questions, and grow apparel sales.",
-    heroImageUrl: IMG.tiendanube,
+    heroImageBeforeUrl: PAIR.tiendanube.before,
+    heroImageAfterUrl: PAIR.tiendanube.after,
     heroImageAlt:
-      "Two fashion models in coordinated outfits — Tiendanube apparel catalog visualization.",
+      "Before and after virtual try-on: catalog look versus elevated styling for Tiendanube.",
     heroOverlayLabel: "Cambio visual: look A → look B",
     trustLine: "Trusted by growing LATAM brands",
   },
@@ -114,9 +134,10 @@ export const seoIntegrationPages = {
     pageTitle: "Virtual Try-On for Mercado Shops | TryLook-ai",
     metaDescription:
       "Stand out on Mercado Shops with TryLook-ai: AI virtual fitting room, fewer fit questions, and clearer purchase confidence for apparel buyers.",
-    heroImageUrl: IMG.mercadoshops,
+    heroImageBeforeUrl: PAIR.mercadoshops.before,
+    heroImageAfterUrl: PAIR.mercadoshops.after,
     heroImageAlt:
-      "Model in sunglasses and leather jacket — bold street style for Mercado Shops listings.",
+      "Before and after virtual try-on: shopping day versus statement outfit for Mercado Shops.",
     heroOverlayLabel: "Provador: street → gala",
     trustLine: "Fewer “how does it fit?” messages",
   },
@@ -130,9 +151,10 @@ export const seoIntegrationPages = {
     pageTitle: "Virtual Try-On for Hostinger Stores | TryLook-ai",
     metaDescription:
       "TryLook-ai for Hostinger website builder stores: quick AI clothing try-on integration. Help shoppers visualize fits and grow revenue.",
-    heroImageUrl: IMG.hostinger,
+    heroImageBeforeUrl: PAIR.hostinger.before,
+    heroImageAfterUrl: PAIR.hostinger.after,
     heroImageAlt:
-      "Shoppers with bags in a bright mall setting — Hostinger store discovery and try-on.",
+      "Before and after virtual try-on: retail display versus curated wardrobe for Hostinger stores.",
     heroOverlayLabel: "Day outfit → night out (AI)",
     trustLine: "Quick install on your builder site",
   },

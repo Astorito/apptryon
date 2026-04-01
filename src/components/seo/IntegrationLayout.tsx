@@ -6,6 +6,7 @@ import {
   TRYLOOK_MAIN_URL,
   getCanonicalUrl,
 } from "@/data/seoIntegrationPages";
+import { BeforeAfterSlider } from "@/components/seo/BeforeAfterSlider";
 
 export type IntegrationLayoutProps = IntegrationPageConfig;
 
@@ -19,7 +20,8 @@ export function IntegrationLayout({
   pageTitle,
   metaDescription,
   path,
-  heroImageUrl,
+  heroImageBeforeUrl,
+  heroImageAfterUrl,
   heroImageAlt,
   heroOverlayLabel,
   trustLine,
@@ -54,7 +56,7 @@ export function IntegrationLayout({
       name: `TryLook-ai for ${platformName}`,
       description: metaDescription,
       brand: { "@type": "Brand", name: "TryLook-ai" },
-      image: heroImageUrl,
+      image: heroImageAfterUrl,
     },
   };
 
@@ -70,14 +72,14 @@ export function IntegrationLayout({
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:url" content={canonical} />
-        <meta property="og:image" content={heroImageUrl} />
+        <meta property="og:image" content={heroImageAfterUrl} />
         <meta property="og:locale" content="en_US" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@TryLookAI" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={metaDescription} />
-        <meta name="twitter:image" content={heroImageUrl} />
+        <meta name="twitter:image" content={heroImageAfterUrl} />
 
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
@@ -165,28 +167,26 @@ export function IntegrationLayout({
             </div>
 
             <div className="relative">
-              <div className="relative overflow-hidden rounded-2xl border-4 border-white shadow-2xl">
-                <img
-                  src={heroImageUrl}
-                  alt={heroImageAlt}
-                  width={900}
-                  height={900}
-                  className="aspect-square w-full object-cover"
-                  loading="eager"
-                  decoding="async"
-                />
-                <div className="absolute bottom-4 left-1/2 flex max-w-[calc(100%-2rem)] -translate-x-1/2 items-center gap-3 rounded-full border border-white/30 bg-[rgba(250,249,248,0.7)] px-4 py-2.5 shadow-lg backdrop-blur-md sm:bottom-6 sm:px-6 sm:py-3">
-                  <div className="flex items-center gap-2">
-                    <span
-                      className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-[#74593f]"
-                      aria-hidden
-                    />
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#1a1c1c]">
-                      {heroOverlayLabel}
-                    </span>
+              <BeforeAfterSlider
+                beforeSrc={heroImageBeforeUrl}
+                afterSrc={heroImageAfterUrl}
+                comparisonLabel={heroImageAlt}
+                beforeLabel="Before"
+                afterLabel="After"
+                overlay={
+                  <div className="flex items-center gap-3 rounded-full border border-white/30 bg-[rgba(250,249,248,0.7)] px-4 py-2.5 shadow-lg backdrop-blur-md sm:px-6 sm:py-3">
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-[#74593f]"
+                        aria-hidden
+                      />
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-[#1a1c1c]">
+                        {heroOverlayLabel}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </div>
+                }
+              />
               <div
                 className="pointer-events-none absolute -right-12 -top-12 -z-10 h-64 w-64 rounded-full bg-[#ba9a7c]/10 blur-3xl"
                 aria-hidden
