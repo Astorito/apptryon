@@ -83,10 +83,10 @@ export function BeforeAfterSlider({
   }, []);
 
   return (
-    <div className={cn("relative", className)}>
+    <div className={cn("relative flex w-full justify-center", className)}>
       <div
         ref={containerRef}
-        className="relative aspect-square w-full cursor-ew-resize touch-none overflow-hidden rounded-2xl border-4 border-white shadow-2xl outline-none select-none focus-visible:ring-2 focus-visible:ring-[#74593f] focus-visible:ring-offset-2"
+        className="relative aspect-square w-[min(92vw,min(34vh,360px))] cursor-ew-resize touch-none overflow-hidden rounded-2xl border-4 border-white shadow-2xl outline-none select-none focus-visible:ring-2 focus-visible:ring-[#74593f] focus-visible:ring-offset-2 sm:w-[min(88vw,min(44vh,420px))] md:w-[min(80vw,min(48vh,460px))] lg:w-[min(38vw,min(58vh,520px))] xl:w-[min(36vw,min(60vh,560px))]"
         aria-label={comparisonLabel}
         tabIndex={0}
         role="slider"
@@ -106,7 +106,7 @@ export function BeforeAfterSlider({
           alt=""
           width={900}
           height={900}
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center"
           draggable={false}
           loading="eager"
           decoding="async"
@@ -124,7 +124,7 @@ export function BeforeAfterSlider({
             alt=""
             width={900}
             height={900}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-center"
             draggable={false}
             loading="eager"
             decoding="async"
