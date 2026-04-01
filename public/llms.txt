@@ -1,0 +1,21 @@
+# TryLook-ai
+
+> Staging / local preview: production deploy generates this file with URLs from VITE_SITE_URL. Canonical on live site: https://www.trylook-ai.com/llms.txt
+
+> AI virtual try-on for e-commerce. Shoppers upload a photo and preview garments before purchase.
+
+## Key pages (production)
+
+- https://www.trylook-ai.com/
+- https://www.trylook-ai.com/demo
+- https://www.trylook-ai.com/shopify-virtual-try-on
+- https://www.trylook-ai.com/woocommerce-virtual-try-on
+- https://www.trylook-ai.com/webflow-virtual-try-on
+- https://www.trylook-ai.com/tiendanube-virtual-try-on
+- https://www.trylook-ai.com/mercadoshops-virtual-try-on
+- https://www.trylook-ai.com/hostinger-virtual-try-on
+
+## Citation
+
+- Name: TryLook-ai (also: Try Look)
+- X: https://twitter.com/TryLookAI

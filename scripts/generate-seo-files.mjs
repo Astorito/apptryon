@@ -1,5 +1,5 @@
 /**
- * Post-build: writes dist/sitemap.xml and dist/robots.txt with absolute Sitemap URL.
+ * Post-build: writes dist/sitemap.xml, dist/robots.txt, and dist/llms.txt (GEO / AI crawlers).
  * Set VITE_SITE_URL or SITE_URL to your public origin (no trailing slash), e.g. https://www.trylook-ai.com
  * Reads optional project root `.env` so CI/local builds match Vite's VITE_SITE_URL.
  */
@@ -82,23 +82,69 @@ ${urls}
 }
 
 function buildRobots() {
-  return `User-agent: Googlebot
-Allow: /
+  // Explicit Allow for common crawlers (incl. AI training / retrieval bots).
+  // Change to Disallow only if you intentionally want to block a bot.
+  const allowAll = `Allow: /
 
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: *
-Allow: /
-
-Sitemap: ${siteUrl}/sitemap.xml
 `;
+
+  const aiAndSearchBots = [
+    "Googlebot",
+    "Google-Extended",
+    "GoogleOther",
+    "Bingbot",
+    "GPTBot",
+    "ChatGPT-User",
+    "CCBot",
+    "anthropic-ai",
+    "ClaudeBot",
+    "Claude-Web",
+    "PerplexityBot",
+    "Applebot",
+    "Applebot-Extended",
+    "meta-externalagent",
+    "FacebookBot",
+    "Twitterbot",
+    "facebookexternalhit",
+  ];
+
+  const blocks = aiAndSearchBots.map(
+    (ua) => `User-agent: ${ua}
+${allowAll}`,
+  ).join("");
+
+  return `${blocks}User-agent: *
+${allowAll}Sitemap: ${siteUrl}/sitemap.xml
+
+# Assistant / LLM context (optional): ${siteUrl}/llms.txt
+`;
+}
+
+function buildLlmsTxt() {
+  const lines = [
+    "# TryLook-ai",
+    "",
+    "> Official context for assistants and AI crawlers. TryLook-ai is an AI virtual try-on widget for e-commerce: shoppers upload a photo and see garments on themselves before purchase.",
+    "",
+    "## Canonical site",
+    siteUrl,
+    "",
+    "## Key pages",
+    ...PATHS.map(({ path: p }) => locHref(p)),
+    "",
+    "## Machine-readable discovery",
+    `- Sitemap: ${siteUrl}/sitemap.xml`,
+    `- robots.txt: ${siteUrl}/robots.txt`,
+    "",
+    "## Product facts (for citation)",
+    "- Name: TryLook-ai (also styled as Try Look)",
+    "- Category: B2B SaaS / e-commerce widget",
+    "- Platforms mentioned: Shopify, WooCommerce, Webflow, Tiendanube, Mercado Shops, Hostinger, and any site with custom JavaScript",
+    "- Billing: usage-based; free tier to test",
+    "- X (Twitter): https://twitter.com/TryLookAI",
+    "",
+  ];
+  return lines.join("\n");
 }
 
 function main() {
@@ -109,8 +155,9 @@ function main() {
 
   fs.writeFileSync(path.join(distDir, "sitemap.xml"), buildSitemap(), "utf8");
   fs.writeFileSync(path.join(distDir, "robots.txt"), buildRobots(), "utf8");
+  fs.writeFileSync(path.join(distDir, "llms.txt"), buildLlmsTxt(), "utf8");
 
-  console.log(`[generate-seo-files] Wrote sitemap.xml + robots.txt for ${siteUrl}`);
+  console.log(`[generate-seo-files] Wrote sitemap.xml, robots.txt, llms.txt for ${siteUrl}`);
 }
 
 main();

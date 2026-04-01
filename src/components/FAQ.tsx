@@ -4,21 +4,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { marketingFaqs } from "@/data/faqContent";
 
-const faqs = [
-  {
-    question: "¿How do I install it?",
-    answer: "I'll take care of installing it for you. In one day, you'll have Try Look up and running on your website. You just need to give me access to your platform.",
-  },
-  {
-    question: "¿Can I integrate with e-commerce platforms?",
-    answer: "Yes! Try Look works seamlessly with Shopify, WooCommerce, Hostinger, Webflow, Nube, MercadoShops, and virtually any platform that supports custom JavaScript. We also offer native plugins for popular platforms.",
-  },
-  {
-    question: "¿How is the billing?",
-    answer: "We use usage-based billing, meaning you only pay for the try-ons your customers actually use. There are no monthly minimums or hidden fees. You can start with our free tier to test the integration, then scale as your usage grows.",
-  },
-];
+const faqs = marketingFaqs;
 
 const FAQ = () => {
   return (

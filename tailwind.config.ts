@@ -17,6 +17,8 @@ export default {
         playfair: ["Playfair Display", "serif"],
         inter: ["Inter", "sans-serif"],
         roboto: ["Roboto", "sans-serif"],
+        headline: ["Noto Serif", "Georgia", "serif"],
+        body: ["Manrope", "Inter", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
