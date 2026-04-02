@@ -5,6 +5,9 @@ import { cn } from "@/lib/utils";
 /** Same crop anchor for both layers so object-cover maps the same bust/face region (pair assets should match framing). */
 const OBJECT_POSITION = "50% 26%" as const;
 
+/** Slight zoom on the after layer so subject scale matches the before photo (tune if assets change). */
+const AFTER_SCALE = 1.075;
+
 type BeforeAfterSliderProps = {
   beforeSrc: string;
   afterSrc: string;
@@ -129,7 +132,11 @@ export function BeforeAfterSlider({
             width={900}
             height={900}
             className="pointer-events-none absolute inset-0 h-full w-full object-cover"
-            style={{ objectPosition: OBJECT_POSITION }}
+            style={{
+              objectPosition: OBJECT_POSITION,
+              transform: `scale(${AFTER_SCALE})`,
+              transformOrigin: OBJECT_POSITION,
+            }}
             draggable={false}
             loading="eager"
             decoding="async"
