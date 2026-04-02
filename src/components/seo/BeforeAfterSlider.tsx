@@ -3,10 +3,10 @@ import { ChevronsLeftRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /** Same crop anchor for both layers so object-cover maps the same bust/face region (pair assets should match framing). */
-const OBJECT_POSITION = "40% 26%" as const;
+const OBJECT_POSITION = "60% 36%" as const;
 
 /** Slight zoom on the after layer so subject scale matches the before photo (tune if assets change). */
-const AFTER_SCALE = 1.375;
+const AFTER_SCALE = 1.275;
 
 type BeforeAfterSliderProps = {
   beforeSrc: string;
@@ -134,7 +134,7 @@ export function BeforeAfterSlider({
             className="pointer-events-none absolute inset-0 h-full w-full object-cover"
             style={{
               objectPosition: OBJECT_POSITION,
-              transform: `scale(${AFTER_SCALE})`,
+              transform: `scale(${AFTER_SCALE}) translateX(-8px)`,
               transformOrigin: OBJECT_POSITION,
             }}
             draggable={false}
