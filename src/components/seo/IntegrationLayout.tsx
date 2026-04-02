@@ -4,6 +4,8 @@ import { Star } from "lucide-react";
 import type { IntegrationPageConfig } from "@/data/seoIntegrationPages";
 import {
   TRYLOOK_MAIN_URL,
+  SEO_HERO_AFTER,
+  SEO_HERO_BEFORE,
   absoluteAssetUrl,
   getCanonicalUrl,
 } from "@/data/seoIntegrationPages";
@@ -21,8 +23,8 @@ export function IntegrationLayout({
   pageTitle,
   metaDescription,
   path,
-  heroImageBeforeUrl,
-  heroImageAfterUrl,
+  heroImageBeforeUrl = SEO_HERO_BEFORE,
+  heroImageAfterUrl = SEO_HERO_AFTER,
   heroImageAlt,
   heroOverlayLabel,
   trustLine,
@@ -121,7 +123,7 @@ export function IntegrationLayout({
           </nav>
         </header>
 
-        <main className="flex min-h-0 flex-1 flex-col overflow-hidden lg:flex-row">
+        <main className="flex min-h-0 flex-1 flex-col overflow-y-auto overflow-x-hidden lg:flex-row">
           <div className="mx-auto grid h-full min-h-0 w-full max-w-[1440px] grid-cols-1 content-center items-center gap-3 px-4 py-2 md:gap-4 md:px-8 lg:grid-cols-2 lg:gap-8 lg:px-12 lg:py-0">
             <div className="flex min-h-0 min-w-0 max-w-xl flex-col justify-center overflow-hidden lg:max-h-full lg:py-2">
               <span className="mb-1 font-body text-[10px] font-bold uppercase tracking-[0.2em] text-[#74593f] sm:text-xs md:mb-2 md:tracking-[0.25em]">

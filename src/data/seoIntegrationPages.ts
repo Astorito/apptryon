@@ -11,8 +11,9 @@ export type IntegrationPageConfig = {
   metaDescription: string;
   /** Path segment only, e.g. /shopify-virtual-try-on */
   path: string;
-  heroImageBeforeUrl: string;
-  heroImageAfterUrl: string;
+  /** Defaults to shared SEO hero assets in `public/` — set only to override */
+  heroImageBeforeUrl?: string;
+  heroImageAfterUrl?: string;
   /** Combined alt for the comparison (SEO + a11y) */
   heroImageAlt: string;
   /** Short line on the image pill (outfit / AI focus) */
@@ -55,8 +56,6 @@ export const seoIntegrationPages = {
     pageTitle: "Virtual Try-On Plugin for Shopify | TryLook-ai",
     metaDescription:
       "Boost Shopify conversions and cut returns with TryLook-ai: AI virtual try-on, no code, fast load times. Let shoppers see clothes on themselves before they buy.",
-    heroImageBeforeUrl: SEO_HERO_BEFORE,
-    heroImageAfterUrl: SEO_HERO_AFTER,
     heroImageAlt:
       "Before and after virtual try-on: streetwear look versus evening dress for a Shopify fashion store.",
     heroOverlayLabel: "Outfit preview: streetwear → evening",
@@ -72,8 +71,6 @@ export const seoIntegrationPages = {
     pageTitle: "Virtual Try-On Plugin for WooCommerce | TryLook-ai",
     metaDescription:
       "Add TryLook-ai to WooCommerce in minutes: AI virtual fitting for WordPress stores. Lift AOV, cut returns, and give shoppers confidence to buy.",
-    heroImageBeforeUrl: SEO_HERO_BEFORE,
-    heroImageAfterUrl: SEO_HERO_AFTER,
     heroImageAlt:
       "Before and after virtual try-on: runway styling versus boutique evening look for WooCommerce.",
     heroOverlayLabel: "Look swap: runway → everyday",
@@ -89,8 +86,6 @@ export const seoIntegrationPages = {
     pageTitle: "Virtual Try-On for Webflow E-commerce | TryLook-ai",
     metaDescription:
       "TryLook-ai for Webflow: lightweight AI virtual try-on via embed. Keep your design, add real-time fitting, and convert more browsers into buyers.",
-    heroImageBeforeUrl: SEO_HERO_BEFORE,
-    heroImageAfterUrl: SEO_HERO_AFTER,
     heroImageAlt:
       "Before and after virtual try-on: editorial portrait versus bold street style for Webflow stores.",
     heroOverlayLabel: "Style: editorial → casual layers",
@@ -105,8 +100,6 @@ export const seoIntegrationPages = {
     pageTitle: "Virtual Try-On for Tiendanube | TryLook-ai",
     metaDescription:
       "TryLook-ai for Tiendanube (Nuvemshop): virtual try-on from a photo. Build trust, reduce sizing questions, and grow apparel sales.",
-    heroImageBeforeUrl: SEO_HERO_BEFORE,
-    heroImageAfterUrl: SEO_HERO_AFTER,
     heroImageAlt:
       "Before and after virtual try-on: catalog look versus elevated styling for Tiendanube.",
     heroOverlayLabel: "Cambio visual: look A → look B",
@@ -122,8 +115,6 @@ export const seoIntegrationPages = {
     pageTitle: "Virtual Try-On for Mercado Shops | TryLook-ai",
     metaDescription:
       "Stand out on Mercado Shops with TryLook-ai: AI virtual fitting room, fewer fit questions, and clearer purchase confidence for apparel buyers.",
-    heroImageBeforeUrl: SEO_HERO_BEFORE,
-    heroImageAfterUrl: SEO_HERO_AFTER,
     heroImageAlt:
       "Before and after virtual try-on: shopping day versus statement outfit for Mercado Shops.",
     heroOverlayLabel: "Provador: street → gala",
@@ -139,8 +130,6 @@ export const seoIntegrationPages = {
     pageTitle: "Virtual Try-On for Hostinger Stores | TryLook-ai",
     metaDescription:
       "TryLook-ai for Hostinger website builder stores: quick AI clothing try-on integration. Help shoppers visualize fits and grow revenue.",
-    heroImageBeforeUrl: SEO_HERO_BEFORE,
-    heroImageAfterUrl: SEO_HERO_AFTER,
     heroImageAlt:
       "Before and after virtual try-on: retail display versus curated wardrobe for Hostinger stores.",
     heroOverlayLabel: "Day outfit → night out (AI)",
