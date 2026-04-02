@@ -22,17 +22,22 @@ export type IntegrationPageConfig = {
   trustLine: string;
 };
 
-const OG_FALLBACK =
-  "https://storage.googleapis.com/gpt-engineer-file-uploads/psvUGaV5trMfcevbuwUmBbjk5fi2/social-images/social-1764985510263-Generated Image September 02, 2025 - 12_19PM.jpeg";
-
 /** Production hostname without path; must match Search Console + sitemap. */
 export const SITE_CANONICAL_ORIGIN = "https://www.trylook-ai.com" as const;
 
 export const TRYLOOK_MAIN_URL = `${SITE_CANONICAL_ORIGIN}/` as const;
 
+/**
+ * Bump this when replacing `public/Before.png` or `After.jpeg` so browsers and CDNs
+ * do not keep serving an older file at the same URL.
+ */
+export const SEO_HERO_ASSET_VERSION = "2" as const;
+
 /** Shared hero assets in `public/` — used on every SEO integration landing */
-export const SEO_HERO_BEFORE = "/Before.png" as const;
-export const SEO_HERO_AFTER = "/After.jpeg" as const;
+export const SEO_HERO_BEFORE =
+  `/Before.png?v=${SEO_HERO_ASSET_VERSION}` as const;
+export const SEO_HERO_AFTER =
+  `/After.jpeg?v=${SEO_HERO_ASSET_VERSION}` as const;
 
 /** Absolute URL for meta tags (OG/Twitter) when using root-relative assets */
 export function absoluteAssetUrl(path: string): string {
@@ -147,5 +152,6 @@ export function getCanonicalUrl(path: string): string {
   return `${base}${path}`;
 }
 
-/** Default OG when a page does not set its own image */
-export const defaultOgImage = OG_FALLBACK;
+/** Default OG when a page does not set its own image — same hero as SEO landings */
+export const defaultOgImage =
+  `${SITE_CANONICAL_ORIGIN}/After.jpeg?v=${SEO_HERO_ASSET_VERSION}` as const;
