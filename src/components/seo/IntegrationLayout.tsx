@@ -42,7 +42,7 @@ export function IntegrationLayout({
     isPartOf: {
       "@type": "WebSite",
       name: "TryLook-ai",
-      url: TRYLOOK_MAIN_URL,
+      url: getCanonicalUrl("/"),
     },
     about: {
       "@type": "SoftwareApplication",
@@ -51,7 +51,7 @@ export function IntegrationLayout({
       operatingSystem: "Web",
       offers: {
         "@type": "Offer",
-        url: TRYLOOK_MAIN_URL,
+        url: getCanonicalUrl("/"),
       },
     },
     mainEntity: {

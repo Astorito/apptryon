@@ -24,7 +24,10 @@ export type IntegrationPageConfig = {
 const OG_FALLBACK =
   "https://storage.googleapis.com/gpt-engineer-file-uploads/psvUGaV5trMfcevbuwUmBbjk5fi2/social-images/social-1764985510263-Generated Image September 02, 2025 - 12_19PM.jpeg";
 
-export const TRYLOOK_MAIN_URL = "https://www.trylook-ai.com/" as const;
+/** Production hostname without path; must match Search Console + sitemap. */
+export const SITE_CANONICAL_ORIGIN = "https://www.trylook-ai.com" as const;
+
+export const TRYLOOK_MAIN_URL = `${SITE_CANONICAL_ORIGIN}/` as const;
 
 /** Shared hero assets in `public/` — used on every SEO integration landing */
 export const SEO_HERO_BEFORE = "/Before.png" as const;
@@ -36,7 +39,7 @@ export function absoluteAssetUrl(path: string): string {
   const base =
     envBase ||
     (typeof window !== "undefined" ? window.location.origin : "") ||
-    "https://www.trylook-ai.com";
+    SITE_CANONICAL_ORIGIN;
   const p = path.startsWith("/") ? path : `/${path}`;
   return `${base}${p}`;
 }
@@ -149,7 +152,9 @@ export type SeoIntegrationSlug = keyof typeof seoIntegrationPages;
 
 export function getCanonicalUrl(path: string): string {
   const envBase = import.meta.env.VITE_SITE_URL?.replace(/\/$/, "");
-  const base = envBase || (typeof window !== "undefined" ? window.location.origin : "");
+  const base =
+    envBase ||
+    (typeof window !== "undefined" ? window.location.origin : SITE_CANONICAL_ORIGIN);
   return `${base}${path}`;
 }
 

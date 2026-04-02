@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { marketingFaqs } from "@/data/faqContent";
-import { TRYLOOK_MAIN_URL, defaultOgImage, getCanonicalUrl } from "@/data/seoIntegrationPages";
+import { defaultOgImage, getCanonicalUrl } from "@/data/seoIntegrationPages";
 import { SITE_DEFAULT_DESCRIPTION } from "@/lib/siteSeo";
 
 const BRAND_PRIMARY = "TryLook-ai";
@@ -39,7 +39,7 @@ export function HomePageJsonLd() {
         "@id": orgId,
         name: BRAND_PRIMARY,
         alternateName: [BRAND_ALTERNATE, "TryLook AI"],
-        url: TRYLOOK_MAIN_URL,
+        url: siteUrl,
         logo: {
           "@type": "ImageObject",
           url: defaultOgImage,
@@ -68,11 +68,11 @@ export function HomePageJsonLd() {
         operatingSystem: "Web",
         browserRequirements: "Requires JavaScript. Works in modern browsers.",
         description: SITE_DEFAULT_DESCRIPTION,
-        url: TRYLOOK_MAIN_URL,
+        url: siteUrl,
         image: defaultOgImage,
         offers: {
           "@type": "Offer",
-          url: TRYLOOK_MAIN_URL,
+          url: siteUrl,
           availability: "https://schema.org/InStock",
           description: "Free tier available; usage-based pricing for scale.",
         },
