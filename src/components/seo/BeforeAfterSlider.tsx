@@ -2,6 +2,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronsLeftRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+/** Same crop anchor for both layers so object-cover maps the same bust/face region (pair assets should match framing). */
+const OBJECT_POSITION = "50% 26%" as const;
+
 type BeforeAfterSliderProps = {
   beforeSrc: string;
   afterSrc: string;
@@ -106,7 +109,8 @@ export function BeforeAfterSlider({
           alt=""
           width={900}
           height={900}
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+          style={{ objectPosition: OBJECT_POSITION }}
           draggable={false}
           loading="eager"
           decoding="async"
@@ -124,7 +128,8 @@ export function BeforeAfterSlider({
             alt=""
             width={900}
             height={900}
-            className="h-full w-full object-cover object-center"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+            style={{ objectPosition: OBJECT_POSITION }}
             draggable={false}
             loading="eager"
             decoding="async"
