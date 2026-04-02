@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 const OBJECT_POSITION = "50% 26%" as const;
 
 /** Slight zoom on the after layer so subject scale matches the before photo (tune if assets change). */
-const AFTER_SCALE = 1.075;
+const AFTER_SCALE = 1.175;
 
 type BeforeAfterSliderProps = {
   beforeSrc: string;
