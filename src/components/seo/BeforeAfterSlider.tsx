@@ -3,7 +3,7 @@ import { ChevronsLeftRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /** Same crop anchor for both layers so object-cover maps the same bust/face region (pair assets should match framing). */
-const OBJECT_POSITION = "40% 66%" as const;
+const OBJECT_POSITION = "50% 22%" as const;
 
 /** Slight zoom on the after layer so subject scale matches the before photo (tune if assets change). */
 const AFTER_SCALE = 1.275;
