@@ -9,7 +9,7 @@ const OBJECT_POSITION = "50% 0%" as const;
 const BEFORE_TRANSLATE_Y = "-13px" as const;
 
 /** Slight zoom on the after layer so subject scale matches the before photo (tune if assets change). */
-const AFTER_SCALE = 1.275;
+const AFTER_SCALE = 1.3;
 
 type BeforeAfterSliderProps = {
   beforeSrc: string;
