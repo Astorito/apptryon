@@ -17,7 +17,7 @@ const products = [
     id: 2,
     name: "Vestido Verano Floral",
     price: "$79.99",
-    image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&h=500&fit=crop",
+    image: "/demo-vestido-floral.png",
   },
   {
     id: 3,
