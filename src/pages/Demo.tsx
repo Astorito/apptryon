@@ -4,187 +4,21 @@ import { DEMO_PAGE_DESCRIPTION, DEMO_PAGE_TITLE } from "@/lib/siteSeo";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const products = [
-  // Fila 1
-  {
-    id: 1,
-    name: "Camiseta Básica Blanca",
-    price: "$29.99",
-    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=500&fit=crop",
-  },
-  {
-    id: 2,
-    name: "Vestido Verano Floral",
-    price: "$79.99",
-    image: "/demo-vestido-floral.png",
-  },
-  {
-    id: 3,
-    name: "Jeans Slim Fit",
-    price: "$89.99",
-    image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=500&fit=crop",
-  },
-  {
-    id: 4,
-    name: "Blazer Casual",
-    price: "$129.99",
-    image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&h=500&fit=crop",
-  },
-  // Fila 2
-  {
-    id: 5,
-    name: "Sudadera con Capucha",
-    price: "$59.99",
-    image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=500&fit=crop",
-  },
-  {
-    id: 6,
-    name: "Falda Midi Plisada",
-    price: "$69.99",
-    image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=500&fit=crop",
-  },
-  {
-    id: 7,
-    name: "Camisa de Lino",
-    price: "$54.99",
-    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=500&fit=crop",
-  },
-  {
-    id: 8,
-    name: "Pantalón Chino",
-    price: "$74.99",
-    image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=500&fit=crop",
-  },
-  // Fila 3
-  {
-    id: 9,
-    name: "Chaqueta de Cuero",
-    price: "$199.99",
-    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=500&fit=crop",
-  },
-  {
-    id: 10,
-    name: "Blusa Elegante",
-    price: "$49.99",
-    image: "https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=400&h=500&fit=crop",
-  },
-  {
-    id: 11,
-    name: "Polo Clásico",
-    price: "$44.99",
-    image: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=400&h=500&fit=crop",
-  },
-  {
-    id: 12,
-    name: "Vestido Cocktail",
-    price: "$149.99",
-    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=500&fit=crop",
-  },
-  // Fila 4
-  {
-    id: 13,
-    name: "Cardigan de Punto",
-    price: "$64.99",
-    image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=500&fit=crop",
-  },
-  {
-    id: 14,
-    name: "Shorts Deportivos",
-    price: "$34.99",
-    image: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&h=500&fit=crop",
-  },
-  {
-    id: 15,
-    name: "Abrigo de Lana",
-    price: "$189.99",
-    image: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400&h=500&fit=crop",
-  },
-  {
-    id: 16,
-    name: "Top Crop",
-    price: "$24.99",
-    image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=400&h=500&fit=crop",
-  },
-  // Fila 5
-  {
-    id: 17,
-    name: "Traje Formal",
-    price: "$299.99",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=400&h=500&fit=crop",
-  },
-  {
-    id: 18,
-    name: "Maxi Vestido",
-    price: "$99.99",
-    image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&h=500&fit=crop",
-  },
-  {
-    id: 19,
-    name: "Camisa Denim",
-    price: "$59.99",
-    image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=400&h=500&fit=crop",
-  },
-  {
-    id: 20,
-    name: "Pantalón Palazzo",
-    price: "$79.99",
-    image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&h=500&fit=crop",
-  },
-  // Fila 6
-  {
-    id: 21,
-    name: "Jersey Oversize",
-    price: "$54.99",
-    image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=500&fit=crop",
-  },
-  {
-    id: 22,
-    name: "Vestido Camisero",
-    price: "$84.99",
-    image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=500&fit=crop",
-  },
-  {
-    id: 23,
-    name: "Bomber Jacket",
-    price: "$109.99",
-    image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=500&fit=crop",
-  },
-  {
-    id: 24,
-    name: "Leggings Premium",
-    price: "$39.99",
-    image: "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=400&h=500&fit=crop",
-  },
-];
+import { demoProducts } from "@/data/demoProducts";
+import { useDemoTryOnWidget } from "@/hooks/useDemoTryOnWidget";
 
 const Demo = () => {
   const [showTooltip, setShowTooltip] = useState(false);
 
+  useDemoTryOnWidget();
+
   useEffect(() => {
-    // El widget se carga desde nuestro proxy: así BACKEND_URL queda en nuestro
-    // dominio y todas sus llamadas (generate, upload, proxy) pasan por las
-    // funciones serverless que reenvían sin el header Origin → resuelve el 401.
-    const scriptSrc = "/api/widget";
-
-    // Remove old widget scripts if URL changed
-    const oldScripts = document.querySelectorAll('script[src*="organic-space-fishstick"], script[src*="tryon-backend-definitivo"]');
-    oldScripts.forEach(s => s.remove());
-
-    // Check if this exact script already exists
-    const existingScript = document.querySelector(`script[src="${scriptSrc}"]`);
-    if (!existingScript) {
-      const script = document.createElement("script");
-      script.src = scriptSrc;
-      script.async = true;
-      script.setAttribute("data-tryon-key", "tryon_mmtd5r46_vk0irkw0");
-      document.head.appendChild(script);
-    }
-
-    // Show tooltip after 1.2s, hide after 8s
     const showTimer = setTimeout(() => setShowTooltip(true), 1200);
     const hideTimer = setTimeout(() => setShowTooltip(false), 8000);
-    return () => { clearTimeout(showTimer); clearTimeout(hideTimer); };
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
   }, []);
 
   return (
@@ -216,10 +50,11 @@ const Demo = () => {
               Selecciona un producto
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {products.map((product) => (
-                <div
+              {demoProducts.map((product) => (
+                <Link
                   key={product.id}
-                  className="bg-card rounded-xl overflow-hidden border border-border hover:shadow-lg transition-shadow cursor-pointer group"
+                  to={`/demo/product/${product.id}`}
+                  className="bg-card rounded-xl overflow-hidden border border-border hover:shadow-lg transition-shadow cursor-pointer group block"
                 >
                   <div className="aspect-[4/5]">
                     <img
@@ -243,7 +78,7 @@ const Demo = () => {
                       {product.price}
                     </p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

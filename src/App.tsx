@@ -8,6 +8,8 @@ import Index from "./pages/Index";
 import Demo from "./pages/Demo";
 import NotFound from "./pages/NotFound";
 
+const DemoProductDetail = lazy(() => import("./pages/DemoProductDetail"));
+
 const ShopifyVirtualTryOn = lazy(() => import("./pages/seo/ShopifyVirtualTryOn"));
 const WooCommerceVirtualTryOn = lazy(() => import("./pages/seo/WooCommerceVirtualTryOn"));
 const WebflowVirtualTryOn = lazy(() => import("./pages/seo/WebflowVirtualTryOn"));
@@ -35,6 +37,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/demo" element={<Demo />} />
+            <Route path="/demo/product/:productId" element={<DemoProductDetail />} />
             {/* SEO landing pages — generated in dist/sitemap.xml; not linked from nav/footer */}
             <Route path="/shopify-virtual-try-on" element={<ShopifyVirtualTryOn />} />
             <Route path="/woocommerce-virtual-try-on" element={<WooCommerceVirtualTryOn />} />

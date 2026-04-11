@@ -194,4 +194,22 @@
       }
     }
   }
+
+  /** Demo PDP (CURATED-style) */
+  .demo-glass-panel {
+    background: rgba(251, 249, 246, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .demo-pdp-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .demo-pdp-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .demo-pdp-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
 }
